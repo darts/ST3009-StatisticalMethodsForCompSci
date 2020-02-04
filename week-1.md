@@ -16,7 +16,7 @@ $$
 \binom{2}{1}
 \binom{1}{1}
 $$
-As every time we choose a letter it is removed from the pool of available letters.  
+As every time we choose a letter it is removed from the pool of available letters. So for the first letter we can choose 1 of the available 10, for the second there are only 9 letters remaining so we can choose 1 of 9 and so on.   
 This becomes:
 $$
 10*9*8*7*6*5*4*3*2*1
@@ -28,9 +28,9 @@ $$
 <br>
 
 **(b)**  
-Restrictions of *E* and *F* being next to each other but in any order means we can treat it as a pool of 9 characters.
+Restrictions of *E* and *F* being next to each other but in any order means we can treat it as a pool of 9 characters. Following the reasoning of part (a) we start at choosing 1 of 9 possible letters followed by 1 of 8 and so forth.
 $$
-9!
+9*8*7*6*5*4*3*2*1 = 9!
 $$
 But since *E* and *F* can be in the order *EF* or *FE* we need to multiply this by 2.
 $$
@@ -39,7 +39,11 @@ $$
 <br>
 
 **(c)**  
-Word 'BANANA' contains 6 letters but '*A*' is repeated 3 times and '*N*' 2 times.  
+Word 'BANANA' contains 6 letters. Ignoring the fact that *A* and *N* are repeated we have a total number of possibilities of:
+$$
+6!
+$$
+But '*A*' *is* repeated 3 times and '*N*' 2 times. Due to this we must discount these duplicates resulting in:
 $$
 \frac{6!}{(3!)(2!)} = 60
 $$
@@ -61,7 +65,7 @@ $$
 <br>
 
 **(b)**  
-Exactly two *3*s. Since there are 4 rolls, the number of locations for the *3*s is 4 choose 2. The remaining two rolls must have 1 of 5 values (1,2,4,5,6).
+Exactly two *3*s. This means we only need to consider the two that aren't *3*. Each of these can have 1 of 5 values (1,2,4,5,6). They occupy 2 of the 4 rolls meaning that the number of locations is 4 choose 2. 
 $$
 \binom{4}{2} * \binom{5}{1} * \binom{5}{1} = \binom{4}{2} * 5^2 = 150
 $$
@@ -101,7 +105,7 @@ Assuming order is important, the number of possible combinations is gotten by ch
 $$
 \binom{4}{1}*\binom{3}{1}
 $$
-But since the order is irrelevant this must be divided by 2:
+But since the order is irrelevant this must be divided by 2 to remove duplicates:
 $$
 \frac{\binom{4}{3}*\binom{3}{1}}{2} = 6
 $$
