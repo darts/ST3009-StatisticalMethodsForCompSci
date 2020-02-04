@@ -85,3 +85,34 @@ The sum of these options is:
 $$
 150 + 20 + 1 = 171
 $$
+<br>
+
+
+**Question 3**  
+**(a)**  
+Similar to Q1(c). There are 8 total but each of the 4 distinct cards are repeated twice.  
+$$
+\frac{8!}{2!*2!*2!*2!} = \frac{8!}{(2!)^4} = 2,520
+$$
+<br>
+
+**(b)**  
+Assuming order is important, the number of possible combinations is gotten by choosing 1 of 4 for the first card and 1 of the remaining 3 for the second. 
+$$
+\binom{4}{1}*\binom{3}{1}
+$$
+But since the order is irrelevant this must be divided by 2:
+$$
+\frac{\binom{4}{3}*\binom{3}{1}}{2} = 6
+$$
+<br>
+
+**(c)**    
+Each card can have 2 values:
+$$
+2^2
+$$
+But one of these combinations is duplicated: {hearts,diamonds} = {diamonds, hearts}
+$$
+2^2 -1 = 3
+$$
