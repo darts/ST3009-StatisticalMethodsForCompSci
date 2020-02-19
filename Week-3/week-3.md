@@ -69,7 +69,7 @@ P(wrong)^{k-1} * P(right)
 $$
 As we are removing one each time it is incorrect:
 $$
-\frac{n-1}{n} * \frac{n-2}{n-1} * \frac{n-3}{n-2} * ... * \frac{1}{n-(k-1)}
+(\frac{n-1}{n} * \frac{n-2}{n-1} * \frac{n-3}{n-2} * ... * \frac{n-(k-1)}{n - (k-2)} ) *  \frac{1}{n-(k-1)}
 $$
 <br>
 
