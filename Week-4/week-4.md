@@ -1,6 +1,6 @@
 # ST3009: Statistical Methods for Computer Science
 
-## Week 3 Assignment - Senán d'Art - 17329580
+## Week 4 Assignment - Senán d'Art - 17329580
 
 ### Question 1
 
@@ -82,22 +82,22 @@ $$
 
 #### (c)
 $$
-X >= 1, K = 1
+X <= 1, K = 1 - (\frac{5}{6})^4 = 0.5177
 $$
 $$
-X >= 2, K = 0.4823
+X <= 2, K = 1 - (\frac{4}{6})^4 =  0.8024
 $$
 $$
-X >= 3, K = 0.1975
+X <= 3, K = 1 - (\frac{3}{6})^4 = 0.9375
 $$
 $$
-X >= 4, K = 0.0625
+X <= 4, K = 1 - (\frac{2}{6})^4 = 0.9877
 $$
 $$
-X >= 5, K = 0.0123
+X <= 5, K = 1 - (\frac{1}{6})^4 = 0.9992
 $$
 $$
-X >= 6, K = 0.0008
+X <= 6, K = 1
 $$
 ![CDF](images/q3_cdf.png)  
 **CDF of X**
