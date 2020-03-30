@@ -8,3 +8,6 @@ N = 1000
 lower_chebychev = mu - (sigma / sqrt(0.05 * N))
 upper_chebychev = mu + (sigma / sqrt(0.05 * N))
 
+lower_clt = (-1.96) * (sigma / sqrt(N)) + mu
+upper_clt = (1.96) * (sigma / sqrt(N)) + mu
+
