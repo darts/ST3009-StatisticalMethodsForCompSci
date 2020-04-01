@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ST3009: Statistical Methods for Computer Science</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body class="vscode-light">
+        <h1 id="st3009-statistical-methods-for-computer-science">ST3009: Statistical Methods for Computer Science</h1>
+<h2 id="week-9-assignment---sen%c3%a1n-dart---17329580">Week 9 Assignment - Senán d'Art - 17329580</h2>
+<h3 id="q1">Q1</h3>
+<h4 id="a">(a)</h4>
+<p>The following function returns the minimum of the function for a given step (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span>) value.</p>
+<pre><code class="language-matlab"><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">min</span> = <span class="hljs-title">q1_a</span><span class="hljs-params">(step)</span></span>
+    accuracy = <span class="hljs-number">0.000000001</span>;
+
+    <span class="hljs-built_in">i</span> = <span class="hljs-number">0</span>;
+    <span class="hljs-built_in">j</span> = <span class="hljs-number">0</span>;
+    nx = <span class="hljs-number">3</span>;
+    <span class="hljs-keyword">while</span> <span class="hljs-built_in">abs</span>(nx - <span class="hljs-built_in">j</span>) &gt; accuracy
+        <span class="hljs-built_in">j</span> = nx;
+        nx = <span class="hljs-built_in">j</span> - (step * (<span class="hljs-number">2</span>*<span class="hljs-built_in">j</span>));
+        <span class="hljs-built_in">i</span> = <span class="hljs-built_in">i</span> + <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">end</span>
+    <span class="hljs-built_in">min</span> = <span class="hljs-built_in">j</span>^<span class="hljs-number">2</span> - <span class="hljs-number">1</span>;
+    <span class="hljs-built_in">disp</span>(<span class="hljs-built_in">i</span>);
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<br>
+<h4 id="b">(b)</h4>
+<p>By plotting the value at each of the steps the following graphs were created:</p>
+<p><img src="file:////Users/darts/Documents/Git-Some/ST3009-StatisticalMethodsForCompSci/Week-9/Q1_b.png" alt="Q1_b_graph"></p>
+<p>When <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.01</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.01</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">0</span><span class="mord">1</span></span></span></span>, the minimum is acheived in 888 steps.<br>
+When <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.1</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">1</span></span></span></span>, the minimum is acheived in 92 steps.<br>
+When <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>α</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\alpha = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>, the minimum is overshot and the code will not reach it as the steps are too large.</p>
+<p>Out of the 3 values here, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>α</mi><mo>=</mo><mn>0.1</mn></mrow><annotation encoding="application/x-tex">\alpha = 0.1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">1</span></span></span></span> is the most optimal as it reaches the minimum without the large overhead of the smaller number. The largest value (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>α</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\alpha = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>) is useless as it does not reach the minimum.</p>
+<br>
+<h4 id="c">(c)</h4>
+<p>The following code was used:</p>
+<pre><code class="language-matlab"><div><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">m</span> = <span class="hljs-title">q1c</span><span class="hljs-params">()</span></span>
+    step = <span class="hljs-number">0.1</span>;
+    accuracy = <span class="hljs-number">0.00001</span>;
+    
+    rng(<span class="hljs-number">0</span>);
+
+    ix = [];
+    iy = [];
+    <span class="hljs-built_in">i</span> = <span class="hljs-number">0</span>;
+    x = <span class="hljs-number">0</span>;
+    nx = <span class="hljs-number">3</span>;
+    <span class="hljs-keyword">while</span> <span class="hljs-built_in">abs</span>(nx - x) &gt; accuracy
+        x = nx;
+
+        y = f(x);
+        ny = y;
+        <span class="hljs-keyword">while</span> ny &gt;= y
+            nx = x + ((<span class="hljs-built_in">rand</span>() - <span class="hljs-number">0.5</span>) * step);
+            ny = f(nx);
+            <span class="hljs-built_in">i</span> = <span class="hljs-built_in">i</span> + <span class="hljs-number">1</span>;
+            ix(<span class="hljs-built_in">i</span>) = nx;
+            iy(<span class="hljs-built_in">i</span>) = ny;
+        <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">end</span>
+    m = f(x);
+
+    <span class="hljs-built_in">disp</span>(<span class="hljs-built_in">i</span>);
+    <span class="hljs-built_in">scatter</span>(ix, iy)
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">y</span> = <span class="hljs-title">f</span><span class="hljs-params">(x)</span></span>
+    y = x^<span class="hljs-number">2</span> - <span class="hljs-number">1</span>;
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<p>The resulting graph looked like this:<br>
+<img src="file:////Users/darts/Documents/Git-Some/ST3009-StatisticalMethodsForCompSci/Week-9/Q1_c.png" alt="Q1_c_graph"></p>
+<p><br><br></p>
+<h4 id="d">(d)</h4>
+<p>By changing the random seed value at the start, different timing was observed. In the case of the graph above, it took ~16,000 iterations to reach the minimum. However the number of iterations varied between <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>33</mn></mrow><annotation encoding="application/x-tex">33</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">3</span></span></span></span> (lowest observed) and  <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext> </mtext><mn>52</mn><mo separator="true">,</mo><mn>000</mn></mrow><annotation encoding="application/x-tex">~52,000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mspace nobreak"> </span><span class="mord">5</span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span></span></span></span> (highest observed). This highlights some of the charactaristics of this approach: it is very random and the time taken to complete the operation depends heavily on the initial random seed. It is also difficult to predict the performance as it can vary greatly.</p>
+<p><br><br></p>
+<h3 id="q2">Q2</h3>
+<h4 id="a-1">(a)</h4>
+<p>We can assign a value to each review, in this case we assign the value of 1 to a positive review and a value of -1 to a negative review.</p>
+<p>Each review can be written as a vector:</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>r</mi><mi>e</mi><mi>d</mi><mo>=</mo><mi>s</mi><mi>i</mi><mi>g</mi><mi>n</mi><mo stretchy="false">(</mo><msub><mi>θ</mi><mn>0</mn></msub><mo>+</mo><msub><mi>θ</mi><mn>1</mn></msub><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>θ</mi><mn>2</mn></msub><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>+</mo><mo>+</mo><msub><mi>θ</mi><mi>n</mi></msub><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">pred = sign(\theta_0 + \theta_1x_1 + \theta_2x_2 + ... + + \theta_nx_n)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">d</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">+</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p>Where <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>θ</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\theta_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is the weight applied to each element,
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>x</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">x_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> is the number of times a word appears in the review.<br>
+In this case <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>p</mi><mi>r</mi><mi>e</mi><mi>d</mi></mrow><annotation encoding="application/x-tex">pred</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">p</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">e</span><span class="mord mathdefault">d</span></span></span></span> is the prediction (positive or negative).</p>
+<p>To calculate <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>θ</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">\theta_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> we need to apply a cost function and iterate through possible values to find the values which are most accurate (train the model).</p>
+<p>When trained, we can apply the vector representing a review to the weighted vector we are using. Then based on if the result is positive or negative, we can predict the sentiment of the review.</p>
+<br> 
+<h4 id="b-1">(b)</h4>
+<p>Assumptions:</p>
+<ul>
+<li>We assume that the relationship is linear, ie. there do not exist multiple minimums in our cost function which could result in a different result (we could find a local minimum but not a global minimum).</li>
+<li>We also assume that the set of reviews selected is representative of all reviews. If there are biases in the sample data, these will be reflected in the predictions.</li>
+</ul>
+<br>
+<h4 id="c-1">(c)</h4>
+<ul>
+<li>Take subsets of the training data (with replacement).</li>
+<li>Train model using this data.</li>
+<li>Log the parameter values (<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span></span></span></span>).</li>
+<li>Repeat many times.</li>
+</ul>
+<p>This should allow us to get a confidence interval for each of the words in the review. It must be repeated many times in order to build up a decently accurate spread of values.<br>
+By comparing the confidence of each of the words in a review and their weights, we can predict a certain level of confidence for that review.</p>
+
+    </body>
+    </html>

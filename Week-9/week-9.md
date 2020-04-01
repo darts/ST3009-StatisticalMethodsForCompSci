@@ -31,7 +31,7 @@ By plotting the value at each of the steps the following graphs were created:
 ![Q1_b_graph](Q1_b.png)
 
 When $\alpha = 0.01$, the minimum is acheived in 888 steps.  
-When $\alpha = 0.1$, the minimum is acheived in 888 steps.   
+When $\alpha = 0.1$, the minimum is acheived in 92 steps.   
 When $\alpha = 1$, the minimum is overshot and the code will not reach it as the steps are too large.  
 
 Out of the 3 values here, $\alpha = 0.1$ is the most optimal as it reaches the minimum without the large overhead of the smaller number. The largest value ($\alpha = 1$) is useless as it does not reach the minimum.
@@ -85,6 +85,8 @@ The resulting graph looked like this:
 
 #### (d)  
 By changing the random seed value at the start, different timing was observed. In the case of the graph above, it took ~16,000 iterations to reach the minimum. However the number of iterations varied between $33$ (lowest observed) and  $~52,000$ (highest observed). This highlights some of the charactaristics of this approach: it is very random and the time taken to complete the operation depends heavily on the initial random seed. It is also difficult to predict the performance as it can vary greatly.
+
+<br><br>
 
 ### Q2
 
