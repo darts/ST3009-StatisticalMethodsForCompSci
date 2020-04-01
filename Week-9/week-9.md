@@ -109,15 +109,18 @@ When trained, we can apply the vector representing a review to the weighted vect
 
 #### (b)
 Assumptions:  
-We assume that the relationship is linear, ie. there do not exist multiple minimums in our cost function which could result in a different result (we could find a local minimum but not a global minimum).  
-We also assume that the set of reviews selected is representative of all reviews. If there are biases in the sample data, these will be reflected in the predictions.
+
+- We assume that the relationship is linear, ie. there do not exist multiple minimums in our cost function which could result in a different result (we could find a local minimum but not a global minimum).  
+- We also assume that the set of reviews selected is representative of all reviews. If there are biases in the sample data, these will be reflected in the predictions.
 
 <br>
 
 #### (c)  
-Take subsets of the training data (with replacement).  
-Train model using this data.  
-Log the parameter values ($\theta$).  
-Repeat many times.  
 
-This should allow us to get a confidence interval for each of the words in the review. By comparing the confidence of each of the words in a review and their weights, we can predict a certain level of confidence for that review.
+- Take subsets of the training data (with replacement).  
+- Train model using this data.  
+- Log the parameter values ($\theta$).  
+- Repeat many times.  
+
+This should allow us to get a confidence interval for each of the words in the review. It must be repeated many times in order to build up a decently accurate spread of values.  
+By comparing the confidence of each of the words in a review and their weights, we can predict a certain level of confidence for that review.
