@@ -28,7 +28,7 @@ $$
 
 Bootstrapping:  
 $$
-
+0.2244 \leq X \leq 0.2790
 $$
 
 CLT Pros:

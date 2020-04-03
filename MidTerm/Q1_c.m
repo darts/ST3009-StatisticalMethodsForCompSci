@@ -13,6 +13,10 @@ upper_clt = (1.96) * (sigma / sqrt(N)) + mu
 
 A = readmatrix('dataset_vals', 'Delimiter', ' ');
 A = A(:,1);
+datasetSize = 1000;
+for i = 1:numel(A)
+    A(i) = A(i) > 10;
+end
 
-% sample = datasample(A, 1000)
+ci = bootci(datasetSize, {@mean, A})
 
