@@ -10,7 +10,6 @@ for i = 1: 100000
 end
 
 cumulative / iterations
-% getRandomUser(L, P)
 
 
 function F = getRandomUser(P,X)
