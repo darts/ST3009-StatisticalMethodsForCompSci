@@ -14,5 +14,5 @@ upper_clt = (1.96) * (sigma / sqrt(N)) + mu
 A = readmatrix('dataset_vals', 'Delimiter', ' ');
 A = A(:,1);
 
-sample = datasample(A, 1000)
+% sample = datasample(A, 1000)
 
