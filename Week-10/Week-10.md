@@ -124,11 +124,22 @@ $$
 The joint PDFs are the product of all other PDFs ie:
 
 $$
-e^{-2|\theta y^{(1)} - x^{(1)}|} * e^{-2|\theta y^{(2)} - x^{(2)}|} * ... *e^{-2|\theta y^{(m)} - x^{(m)}|}
+f_{Z|X} = e^{-2|\theta y^{(1)} - x^{(1)}|} * e^{-2|\theta y^{(2)} - x^{(2)}|} * ... *e^{-2|\theta y^{(m)} - x^{(m)}|}
 $$ 
 
 Which becomes:
 
 $$
-{\displaystyle \prod_{i=1}^m} e^{-2|\theta y^{(i)} - x^{(i)}|}
+f_{Z|X} = {\displaystyle \prod_{i=1}^m} e^{-2|\theta y^{(i)} - x^{(i)}|}
 $$
+
+
+#### (b)  
+
+1. Pick a random value for $\theta$.  
+2. Test the value of $\theta$ in $f_{Z|X}$.
+3. Test a value higher than $\theta$ by some value $x$ and one lower than $\theta$ by $x$. This will allow us to see the slope and where the next estimate of $\theta$ should be.
+4. Choose the value of $\theta$ which results in the largest $f_{Z|X}$ and repeat steps 2-4 until a desired accuracy is reached.
+
+The value of $x$ must be carefully chosen as a value too small will take a long time to reach an optimal answer and a value that is too large may miss the optimal answer completely.  
+It would be possible that the when $f_{Z|X}$ stops growing and starts shrinking we modify the algorithm. This could be done by taking the previous two values of $\theta$ and testing the midpoint. The mid point then either becomes the upper or lower bound. We repeat this process until a desired accuracy is reached.
