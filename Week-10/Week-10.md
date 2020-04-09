@@ -24,3 +24,19 @@ Prob that x < 0.5 = 0.5
 <br><br>
 
 ### Q2
+
+#### (a)  
+
+<include graph of pdf>
+<include graph of cdf>
+
+$$
+CDF(x) = (\frac{x}{2})(\frac{x}{2}) = \frac{x^2}{4}
+$$
+
+
+#### (b)  
+
+Can ignore where x > 2.  
+$0.5 \leq x \leq 2$  
+$1 - \frac{(0.5^2)}{4} = 0.9375$ 
