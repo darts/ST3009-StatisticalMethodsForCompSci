@@ -35,8 +35,8 @@ $P(0 \leq x \leq 0.5) = 0.5$
 
 #### (a)  
 
-<include graph of pdf>
-<include graph of cdf>
+We can picture the PDF as a line where the $y$ axis goes from $0\rightarrow 1$ and the $x$ axis goes from $0 \rightarrow 2$.  
+The CDF can be viewed as the area beneath that line.  We use the area of a triangle as $\frac{B}{2}H$.  In this case $\frac{B}{2} = \frac{x}{2}$ and $H = \frac{x}{2}$.
 
 $$
 CDF(x) = (\frac{x}{2})(\frac{x}{2}) = \frac{x^2}{4}
@@ -46,8 +46,12 @@ $$
 
 #### (b)  
 
-Can ignore where x > 2.  
+We can ignore the case where $x > 2$.  
+
 $0.5 \leq x \leq 2$  
+
+Using our formula from above (take $P(X<0.5)$ from $1$):  
+
 $1 - \frac{(0.5^2)}{4} = 0.9375$ 
 
 <br><br>
@@ -55,6 +59,8 @@ $1 - \frac{(0.5^2)}{4} = 0.9375$
 ### Q3  
 
 #### (a)  
+
+Multiply the two probablities:
 
 $$
 F_{XY}(x,y) = \frac{e^{-|x|}}{2} * e^{-2|y|}
