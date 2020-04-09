@@ -115,3 +115,20 @@ We get:
 $$
 f_{X|Y}(x|y) = \frac{\frac{e^{-|xy|}}{e^{-|x|}}\frac{e^{-|x|}}{2}}{e^{-2|y|}} = \frac{\frac{e^{-|xy|}}{2}}{e^{-2|y|}} = \frac{e^{-|xy|}}{2e^{-2|y|}}
 $$
+
+
+### Q4
+
+#### (a)  
+
+The joint PDFs are the product of all other PDFs ie:
+
+$$
+e^{-2|\theta y^{(1)} - x^{(1)}|} * e^{-2|\theta y^{(2)} - x^{(2)}|} * ... *e^{-2|\theta y^{(m)} - x^{(m)}|}
+$$ 
+
+Which becomes:
+
+$$
+{\displaystyle \prod_{i=1}^m} e^{-2|\theta y^{(i)} - x^{(i)}|}
+$$
