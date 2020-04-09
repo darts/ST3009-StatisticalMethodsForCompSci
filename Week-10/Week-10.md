@@ -8,18 +8,26 @@
 #### (a)  
 
 $0$  
-Fx(X) - lim y->X Fx(y) = 0  
-Since at that point there is no change
+$F_X(x) - lim y->X F_X(y) = 0$  
+You cannot find the probability of continuous random variable having a discrete value as there are an uncountably infinite number of possible values.  
+In this case since we are analising a single point on the CDF curve, and there is no change at a point, the probability is $0$.
+
+<br>
 
 #### (b)
 
-Since $P(x<y) = y$ for $0\leq x \leq 1$  
-This is a quarter of the possibilities -> prob = $\frac{1}{4}$ 
+Since $P(x<y) = y$ for $0\leq x \leq 1$.  
+We can simply use the definition of the CDF.  
+The selected range is $0.25$, which is a quarter of the total range and since the relationship is linear, we can determine:  
+$P(0.25 \leq x \leq 0.5) = P(0 \leq x \leq 0.25) = 0.25$ 
 
-#### (c)  
+<br>
 
-Prob that x < 0 = 0 so we disregard that.  
-Prob that x < 0.5 = 0.5
+#### (c)  
+
+In this case we can disregard the case where $x < 0$.  The new range becomes: $0\leq x \leq 0.5$
+Similarly to part (b) above:  
+$P(0 \leq x \leq 0.5) = 0.5$ 
 
 <br><br>
 
@@ -34,6 +42,7 @@ $$
 CDF(x) = (\frac{x}{2})(\frac{x}{2}) = \frac{x^2}{4}
 $$
 
+<br>
 
 #### (b)  
 
@@ -51,6 +60,7 @@ $$
 F_{XY}(x,y) = \frac{e^{-|x|}}{2} * e^{-2|y|}
 $$
 
+<br>
 
 #### (b)  
 
@@ -82,6 +92,8 @@ We get:
 $$
 f_{Y|X}(y|x) = \frac{\frac{e^{-|xy|}}{2}}{\frac{e^{-|x|}}{2}} = \frac{e^{-|xy|}}{e^{-|x|}}
 $$
+
+<br>
 
 #### (c)  
 
@@ -116,6 +128,7 @@ $$
 f_{X|Y}(x|y) = \frac{\frac{e^{-|xy|}}{e^{-|x|}}\frac{e^{-|x|}}{2}}{e^{-2|y|}} = \frac{\frac{e^{-|xy|}}{2}}{e^{-2|y|}} = \frac{e^{-|xy|}}{2e^{-2|y|}}
 $$
 
+<br><br>
 
 ### Q4
 
@@ -133,6 +146,7 @@ $$
 f_{Z|X} = {\displaystyle \prod_{i=1}^m} e^{-2|\theta y^{(i)} - x^{(i)}|}
 $$
 
+<br>
 
 #### (b)  
 
