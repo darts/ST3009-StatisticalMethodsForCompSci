@@ -40,3 +40,78 @@ $$
 Can ignore where x > 2.  
 $0.5 \leq x \leq 2$  
 $1 - \frac{(0.5^2)}{4} = 0.9375$ 
+
+<br><br>
+
+### Q3  
+
+#### (a)  
+
+$$
+F_{XY}(x,y) = \frac{e^{-|x|}}{2} * e^{-2|y|}
+$$
+
+
+#### (b)  
+
+$$
+F_{XY}(x,y) = \frac{e^{-|xy|}}{2}
+$$
+
+From definition of conditional PDF:
+$$
+f_{X|Y}(x|y) = \frac{f_{XY}(x,y)}{f_Y(y)}
+$$
+
+In our case:
+
+$$
+f_{Y|X}(y|x) = \frac{f_{XY}(x,y)}{f_X(x)}
+$$
+ 
+Where:
+$$
+F_{XY}(x,y) = \frac{e^{-|xy|}}{2}
+$$
+and
+$$
+F_X(x) = \frac{e^{-|x|}}{2}
+$$
+
+We get:
+$$
+f_{Y|X}(y|x) = \frac{\frac{e^{-|xy|}}{2}}{\frac{e^{-|x|}}{2}} = \frac{e^{-|xy|}}{e^{-|x|}}
+$$
+
+#### (c)  
+
+Definition of Bayes Rule for PDF:
+$$
+f_{Y|X}(y|x) = \frac{f_{X|Y}(x|y)f_Y(y)}{f_X(x)}
+$$
+
+In our case this becomes:
+
+$$
+f_{X|Y}(x|y) = \frac{f_{Y|X}(y|x)f_X(x)}{f_Y(y)}
+$$
+
+Where:
+
+$$
+f_{Y|X}(y|x) = \frac{e^{-|xy|}}{e^{-|x|}}
+$$
+and:
+$$
+f_Y(y) = e^{-2|y|}
+$$
+and:
+$$
+f_X(x) = \frac{e^{-|x|}}{2}
+$$
+
+We get:
+
+$$
+f_{X|Y}(x|y) = \frac{\frac{e^{-|xy|}}{e^{-|x|}}\frac{e^{-|x|}}{2}}{e^{-2|y|}} = \frac{\frac{e^{-|xy|}}{2}}{e^{-2|y|}} = \frac{e^{-|xy|}}{2e^{-2|y|}}
+$$
