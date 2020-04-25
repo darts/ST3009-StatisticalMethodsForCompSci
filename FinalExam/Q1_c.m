@@ -5,6 +5,9 @@ for n = 1:11
     arr(n) = exactNone(n-1)+exactOne(n-1);
 end
 bar(idx, arr)
+title("Probability of failing exam when studying n questions (3 questions on paper)")
+xlabel("n")
+ylabel("P(failure)")
 
 %returns probability that none of the studied topics appear
 function X = exactNone (n)
