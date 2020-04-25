@@ -22,11 +22,14 @@ p(exactly 1) = $\frac{\binom{10-(n-1)}{2}}{\binom{10}{3}}$ = $\frac{\binom{9-n}{
 
 #### (d)  
 
-1 - $\frac{Nc2}{10c4}$
+p(none)+p(exactly 1)
+p(none) = $\frac{\binom{10-n}{4}}{\binom{10}{4}}$  
+p(exactly 1) = $\frac{\binom{10-(n-1)}{3}}{\binom{10}{4}}$ = $\frac{\binom{9-n}{3}}{\binom{10}{4}}$
 
 **DO A GRAPH**
 
-**COMPARE WITH RESULTS FROM PART (C)**
+**COMPARE WITH RESULTS FROM PART (C)**  
+The chance of failing here should be a fair bit lower
 
 
 #### (e)  v
