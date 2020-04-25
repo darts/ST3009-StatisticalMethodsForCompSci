@@ -1,8 +1,8 @@
-arr = zeros(1,10)
+arr = zeros(1,10);
 
 for n = 1:10
-%     arr(n) = exactNone(n-1)+exactOne(n-1)
-    arr(n) = exactOne(n-1)
+    arr(n) = exactNone(n-1)+exactOne(n-1)
+%     arr(n) = exactOne(n-1)
 end
 
 %returns probability that none of the studied topics appear

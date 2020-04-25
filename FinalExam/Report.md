@@ -16,7 +16,8 @@ $\frac{\binom{10-n}{3}}{\binom{10}{3}}$ where $0<=n<=7$. If $n>7$, the the proba
 
 p(none)+p(exactly 1)  
 p(none) = $\frac{\binom{10-n}{3}}{\binom{10}{3}}$  
-p(exactly 1) = $\frac{\binom{10-(n-1)}{2}}{\binom{10}{3}}$ = $\frac{\binom{9-n}{2}}{\binom{10}{3}}$  
+p(exactly 1) = $\frac{\binom{n}{1}*\binom{10-n}{2}}{\binom{10}{3}}$  
+
 
 **DO A GRAPH**
 
