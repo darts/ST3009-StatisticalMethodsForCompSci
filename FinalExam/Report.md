@@ -32,11 +32,11 @@ p(exactly 1) = $\frac{\binom{10-(n-1)}{3}}{\binom{10}{4}}$ = $\frac{\binom{9-n}{
 The chance of failing here should be a fair bit lower
 
 
-#### (e)  v
+#### (e)
 
 function takes n as input, returns if student passes or not
 
 
-#### (f)
+#### (f)
 
 Call function from (e) N times and return the mean
