@@ -1,8 +1,10 @@
 arr = zeros(1,11);
+idx = [0:10];
 
 for n = 1:11
-    arr(n) = exactNone(n-1)+exactOne(n-1)
+    arr(n) = exactNone(n-1)+exactOne(n-1);
 end
+bar(idx, arr)
 
 %returns probability that none of the studied topics appear
 function X = exactNone (n)
