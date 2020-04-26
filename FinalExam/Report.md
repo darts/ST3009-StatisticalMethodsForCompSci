@@ -44,12 +44,21 @@ The code generates 2 lists of numbers 0-10. It selects the first 3 from one and 
 
 Call function from (e) N times and return the mean
 
-CLT time  
+Searching for range $[\mu-2\sigma, \mu+2\sigma]$
 $$\frac{\frac{(X_1+X_2+...+X_n)}{N} - \mu}{\frac{\sigma}{\sqrt{N}}}$$  
 
 $$
-\frac{idk - (1-X_i)}{\frac{\sqrt{var(1-X_i)}}{N}}
+\frac{Y - (X_i)}{\frac{\sqrt{var(X_i)}}{N}}
 $$
+
+$$
+E[X_i]\plusmn1.96\sqrt{\frac{var(X_i)}{N}}
+$$
+
+Using (c):  
+$1-E[X_i]=0.1833, E[X_i]=0.8167$ when $n=7$.  
+$var(X_i)=\sqrt{\mu*(1-\mu)}=$
+
 
 $\frac{(X_1+X_2+...+X_n)}{n}=Y=mean$  
 $N=N$  
@@ -87,7 +96,9 @@ Assuming exam is predictable, it is not but uses strategy anyway.
 
 Dataset:  `# id:0.332:0.5-0.524:2-0.308:2-0`
 
-#### 
+#### (a)  
+
+
 
 
 <br><br><br><br>
@@ -116,6 +127,13 @@ Dataset:  `# id:0.332:0.5-0.524:2-0.308:2-0`
 <br>
 
 **Section 4:** Code for Q1 (f).
+```matlab
+
+```
+
+<br>
+
+**Section 5:** Code for Q1 (g).
 ```matlab
 
 ```
