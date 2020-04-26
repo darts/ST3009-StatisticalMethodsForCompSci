@@ -44,7 +44,7 @@ The code generates 2 lists of numbers 0-10. It selects the first 3 from one and 
 
 Call function from (e) N times and return the mean
 
-Searching for range $[\mu-2\sigma, \mu+2\sigma]$
+Searching for range $[\mu-1.96\sigma, \mu+1.96\sigma]$
 $$\frac{\frac{(X_1+X_2+...+X_n)}{N} - \mu}{\frac{\sigma}{\sqrt{N}}}$$  
 
 $$
@@ -52,17 +52,22 @@ $$
 $$
 
 $$
-E[X_i]\plusmn2\sqrt{\frac{var(X_i)}{N}}
+E[X_i]\plusmn1.96\frac{var(X_i)}{\sqrt{N}}
 $$
 
 Using (c):  
 $1-E[X_i]=0.1833, E[X_i]=0.8167$ when $n=7$.  
 $var(X_i)=1-E[X_i]=0.1833$.  
+$var(X_i)=\sqrt{\mu*(1-\mu)}=\sqrt{0.8167*(0.1833)}=0.38691$
 
 
 Where $N=1,000$:  
-$0.8167\plusmn2\sqrt{\frac{0.1833}{1000}}$  
+$0.8167\plusmn1.96\sqrt{\frac{0.1833}{1000}}$  
 $0.8167\plusmn0.02707$
+
+$0.8167\plusmn1.96\frac{0.38691}{\sqrt{1000}}$  
+$0.8167\plusmn0.02398$  
+$0.79272, 0.84068$
 
 <br>
 
