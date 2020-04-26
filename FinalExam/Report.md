@@ -18,7 +18,7 @@ p(none)+p(exactly 1)
 p(none) = $\frac{\binom{10-n}{3}}{\binom{10}{3}}$ where $0<=n<=7$, outside of this range $P=0$  
 p(exactly 1) = $\frac{\binom{n}{1}*\binom{10-n}{2}}{\binom{10}{3}}$, where $1<=n<=8$, outside of this range $P=0$  
 
-![Graph of P(failure) with 3 questions on exam](images/Q1_c.png)
+<!-- ![Graph of P(failure) with 3 questions on exam](images/Q1_c.png) -->
 
 #### (d)  
 
@@ -26,7 +26,7 @@ p(none)+p(exactly 1)
 p(none) = $\frac{\binom{10-n}{4}}{\binom{10}{4}}$, where $0<=n<=6$, outside of this range $P=0$
 p(exactly 1) = $\frac{\binom{n}{1}*\binom{10-n}{3}}{\binom{10}{4}}$, where $1<=n<=7$, outside of this range $P=0$  
 
-![Graph of P(failure) with 4 questions on exam](images/Q1_d.png)
+<!-- ![Graph of P(failure) with 4 questions on exam](images/Q1_d.png) -->
 
 **COMPARE WITH RESULTS FROM PART (C)**  
 The chance of failing is much lower.  
@@ -45,22 +45,49 @@ The code generates 2 lists of numbers 0-10. It selects the first 3 from one and 
 Call function from (e) N times and return the mean
 
 CLT time  
-$$\frac{\frac{(X_1+X_2+...+X_n)}{n} - \mu}{\frac{\sigma}{\sqrt{N}}}$$  
+$$\frac{\frac{(X_1+X_2+...+X_n)}{N} - \mu}{\frac{\sigma}{\sqrt{N}}}$$  
+
+$$
+\frac{idk - (1-X_i)}{\frac{\sqrt{var(1-X_i)}}{N}}
+$$
+
 $\frac{(X_1+X_2+...+X_n)}{n}=Y=mean$  
 $N=N$  
 $\sigma=\sqrt{\mu*(1-\mu)}$  
 $\mu = mu$  
 $\sigma=sigma$  
 $var(X_i) = sigma^2$  
+$P(fail) = 1-E[X_i]$
 
 $$
 (\plusmn 1.96) * (sigma / sqrt(N)) + mu
 $$
 
+#### (g)  
+
+Run 1000 times. It results in small error $\frac{1}{\sqrt{n}}$ where $n=1000$ -> $0.03$. Also my computer can't do much more than that, 1000 was already taking ~8 minutes.
+
+#### (h)
+
+Case A - More likely to appear after being on last exam (30->100%):  
+When running this sim, plot range of likelihoods ie each q has a chance to appear of 30-100% in intervals of 10%. 30% is the baseline as this is the chance of a question appearing anyway. Use side-by-side bar graph.  
+First 3 topics studied will be the ones on the previous exam. After this, random from all remaining. Should heavily increase the likelihood of passing.
 
 
+Case B - Less likely to appear after being on the last exam (30->0%):  
+When running the sim, plot range of likelihoods ie. with the chance of each question appearing in the ranges of 30-0% in intervals of 5%.  
+Last 3 topics studied will be the ones on the previous exam. First, randomly from all questions not on previous exam. Should also result in higher chance of passing.
 
+Assuming exam is predictable, it is not but uses strategy anyway.  
+(I presume this shouldn't make much of a difference as the chance of any question appearing is then even so the order we study them in should make no difference.)
 
+<br><br>
+
+### Q2  
+
+Dataset:  `# id:0.332:0.5-0.524:2-0.308:2-0`
+
+#### 
 
 
 <br><br><br><br>
