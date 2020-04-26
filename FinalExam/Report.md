@@ -16,14 +16,14 @@ $\frac{\binom{10-n}{3}}{\binom{10}{3}}$ where $0<=n<=7$. If $n>7$, the the proba
 
 p(none)+p(exactly 1)  
 p(none) = $\frac{\binom{10-n}{3}}{\binom{10}{3}}$ where $0<=n<=7$, outside of this range $P=0$  
-p(exactly 1) = $\frac{\binom{n}{1}*\binom{10-n}{2}}{\binom{10}{3}}$, where $1<=n<=8$, outside of this range $P=0$  
+p(exactly 1) = $\frac{\binom{n}{1}*\binom{9-n}{2}}{\binom{10}{3}}$, where $1<=n<=8$, outside of this range $P=0$  
 
 <!-- ![Graph of P(failure) with 3 questions on exam](images/Q1_c.png) -->
 
 #### (d)  
 
-p(none)+p(exactly 1)
-p(none) = $\frac{\binom{10-n}{4}}{\binom{10}{4}}$, where $0<=n<=6$, outside of this range $P=0$
+p(none)+p(exactly 1)  
+p(none) = $\frac{\binom{10-n}{4}}{\binom{10}{4}}$, where $0<=n<=6$, outside of this range $P=0$  
 p(exactly 1) = $\frac{\binom{n}{1}*\binom{10-n}{3}}{\binom{10}{4}}$, where $1<=n<=7$, outside of this range $P=0$  
 
 <!-- ![Graph of P(failure) with 4 questions on exam](images/Q1_d.png) -->
@@ -52,13 +52,19 @@ $$
 $$
 
 $$
-E[X_i]\plusmn1.96\sqrt{\frac{var(X_i)}{N}}
+E[X_i]\plusmn2\sqrt{\frac{var(X_i)}{N}}
 $$
 
 Using (c):  
 $1-E[X_i]=0.1833, E[X_i]=0.8167$ when $n=7$.  
-$var(X_i)=\sqrt{\mu*(1-\mu)}=$
+$var(X_i)=1-E[X_i]=0.1833$.  
 
+
+Where $N=1,000$:  
+$0.8167\plusmn2\sqrt{\frac{0.1833}{1000}}$  
+$0.8167\plusmn0.02707$
+
+<br>
 
 $\frac{(X_1+X_2+...+X_n)}{n}=Y=mean$  
 $N=N$  

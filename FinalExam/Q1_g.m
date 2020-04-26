@@ -1,9 +1,9 @@
 rng(221);
 N = 1000;
-runs = 1000;
+runs = 800;
 freq = zeros([1,runs]);
-lowerBound = 0.46;
-upperBound = 0.54;
+lowerBound = 0.8167-0.02707;
+upperBound = 0.8167+0.02707;
 perBound = 0;
 
 for i = 1:runs
@@ -33,7 +33,7 @@ function Y = extSim(N)
     generated = randi(11,[1,N])-1;
     Y = 0;
     for i = 1:numel(generated)
-        Y = Y + stoSim3(generated(i));
+        Y = Y + stoSim3(7);
     end
     Y = Y/N;
 end

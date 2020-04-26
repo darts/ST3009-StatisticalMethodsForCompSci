@@ -1,5 +1,5 @@
 rng(221);
-extSim(5000)
+extSim(1000)
 function X = stoSim3 (n)
     choice = randperm(10); %get elements in random order
     choice = choice(1:3); %select 3 questions for exam
@@ -17,7 +17,8 @@ function Y = extSim(N)
     generated = randi(11,[1,N])-1;
     Y = 0;
     for i = 1:numel(generated)
-        Y = Y + stoSim3(generated(i));
+%         Y = Y + stoSim3(generated(i));
+        Y = Y + stoSim3(7);
     end
     Y = Y/N;
 end
