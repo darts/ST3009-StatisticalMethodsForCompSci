@@ -58,34 +58,22 @@ $$
 
 Using (c):  
 $1-E[X_i]=0.1833, E[X_i]=0.8167$ when $n=7$.  
-$var(X_i)=\sqrt{\mu*(1-\mu)}=\sqrt{0.8167*(0.1833)}=0.38691$
+$var(X_i)=\mu*(1-\mu)=0.8167*0.1833=0.1497$
 
 
 Where $N=1,000$:  
-$0.8167\plusmn1.96\sqrt{\frac{0.1833}{1000}}$  
-$0.8167\plusmn0.02707$
+$0.8167\plusmn2\sqrt{\frac{0.1497}{1000}}$  
+$0.8167\plusmn0.02447$  
+$[0.79223,0.84117]$
 
-$0.8167\plusmn1.96\frac{0.38691}{\sqrt{1000}}$  
-$0.8167\plusmn0.02398$  
-$0.79272, 0.84068$
-
-<br>
-
-$\frac{(X_1+X_2+...+X_n)}{n}=Y=mean$  
-$N=N$  
-$\sigma=\sqrt{\mu*(1-\mu)}$  
-$\mu = mu$  
-$\sigma=sigma$  
-$var(X_i) = sigma^2$  
-$P(fail) = 1-E[X_i]$
-
-$$
-(\plusmn 1.96) * (sigma / sqrt(N)) + mu
-$$
+Where $N=10,000$:  
+$0.8167\plusmn2\sqrt{\frac{0.1497}{10000}}$  
+$0.8167\plusmn0.00773$  
+$[0.80897,0.82443]$
 
 #### (g)  
 
-Run 1000 times. It results in small error $\frac{1}{\sqrt{n}}$ where $n=1000$ -> $0.03$. Also my computer can't do much more than that, 1000 was already taking ~8 minutes.
+Use Chebychev to get $n$ for $N=1,000, N=10,000$
 
 #### (h)
 
