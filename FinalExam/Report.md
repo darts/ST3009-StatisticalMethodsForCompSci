@@ -45,12 +45,13 @@ The code generates 2 lists of numbers 0-10. It selects the first 3 from one and 
 Call function from (e) N times and return the mean
 
 CLT time  
-$\frac{\frac{(X_1+X_2+...+X_n)}{n} - \mu}{\frac{\sigma}{\sqrt{N}}}$  
+$$\frac{\frac{(X_1+X_2+...+X_n)}{n} - \mu}{\frac{\sigma}{\sqrt{N}}}$$  
 $\frac{(X_1+X_2+...+X_n)}{n}=Y=mean$  
 $N=N$  
 $\sigma=\sqrt{\mu*(1-\mu)}$  
 $\mu = mu$  
-$\sigma=sigma$
+$\sigma=sigma$  
+$var(X_i) = sigma^2$  
 
 $$
 (\plusmn 1.96) * (sigma / sqrt(N)) + mu

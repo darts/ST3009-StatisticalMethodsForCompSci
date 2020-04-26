@@ -1,3 +1,4 @@
+rng(221);
 N = 1000;
 runs = 1000;
 freq = zeros([1,runs]);
@@ -7,7 +8,9 @@ perBound = 0;
 
 for i = 1:runs
     freq(i) = extSim(N);
-    perBound = perBound + freq(i);
+    if freq(i) > lowerBound & freq(i) < upperBound
+       perBound = perBound + 1; 
+    end
 end
 perBound = perBound/runs
 hist(freq)

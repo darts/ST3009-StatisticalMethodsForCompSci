@@ -1,3 +1,4 @@
+rng(221);
 stoSim3(1)
 function X = stoSim3 (n)
     choice = randperm(10); %get elements in random order
