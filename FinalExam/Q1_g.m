@@ -1,9 +1,12 @@
 rng(221);
-N = 1000;
-runs = 800;
+%N = 1000; %a
+N = 10000; %b
+runs = 1000;
 freq = zeros([1,runs]);
-lowerBound = 0.8167-0.02707;
-upperBound = 0.8167+0.02707;
+%lowerBound = 0.79223; %a
+%upperBound = 0.84117; %a
+lowerBound = 0.80897; %b
+upperBound = 0.82443; %b
 perBound = 0;
 
 for i = 1:runs

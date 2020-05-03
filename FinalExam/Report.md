@@ -72,17 +72,29 @@ $0.8167\plusmn0.00773$
 $[0.80897,0.82443]$
 
 #### (g)  
-
-Use Chebychev to get $n$ for $N=1,000, N=10,000$
+***Change this a bit***  
+The simulation generates a new set of topics studied by a student and a set of topics to appear on the exam for each N. It then verifies if the student has passed the exam and uses the series of values to calculate the mean, Y.  
+For each iteration of the simulation, the resulting Y is compared to the confidence interval and if it lands within the interval it is added to a counter. When all X simulations have been run, this counter is divided by X to find what percentage was within the confidence interval.  
+I chose an X of $1,000$. The reason for this is that we are already using values of $N=1,000,N=10,000$ resulting in a total number of iterations of $1,000,000$ and $10,000,000$ respectively. This number is more than large enough to provide an accurate result. Running time was also unreasonable when $X>1,000$ which did factor into the decision.  
+In the case of $N=1,000$ the simulation resulted in an accuracy of $95.4\%$.  
+In the case of $N=10,000$ the simulation resulted in an accuracy of $94.9\%$.  
+These results seem very reasonable as both are quite close to $95\%$. With a different seed for the random number generator the result could be slightly different but both results are acceptably close to $95\%$.
 
 #### (h)
 
-Case A - More likely to appear after being on last exam (30->100%):  
-When running this sim, plot range of likelihoods ie each q has a chance to appear of 30-100% in intervals of 10%. 30% is the baseline as this is the chance of a question appearing anyway. Use side-by-side bar graph.  
-First 3 topics studied will be the ones on the previous exam. After this, random from all remaining. Should heavily increase the likelihood of passing.
+Case A - More likely to appear after being on last exam:  
+The student could modify their approach as follows:  
+The first 3 topics studied will be the ones on the previous exam. After this, they will be chosen at random from all remaining topics. This approach should heavily increase the likelihood of passing depending on how predictable the exam is.  
+The simulation was modified as follows:  
+A 'past exam' was generated, representing the previous year's exam. Based on how predicatable this year's exam is, the questions from the previous exam were more likely to be selected this year. The student's approach to the exam was to first study the previous exam and then all other topics.  
+![Graph of chance of passing vs predictability](images/Q1_h_line.png)
+Here the legend refers to the % probability that a question will appear on this year's exam, given that it appeared last year. The simulation was run for $N=1,000$ for all values. As can be clearly seen in this chart: a more predictable exam will result in a much higher chance of passing.
+In the case of a completely random exam, each question has a $30\%$ chance of appearing on the paper. Here we can see what happens when we chance that probability from 30-100% in intervals of 10%.  
 
 
-Case B - Less likely to appear after being on the last exam (30->0%):  
+Case B - Less likely to appear after being on the last exam:  
+In this case the student would take a different approach:  
+The last 3 questions studied would be those in last year's exam. All others would be chosen at random.  
 When running the sim, plot range of likelihoods ie. with the chance of each question appearing in the ranges of 30-0% in intervals of 5%.  
 Last 3 topics studied will be the ones on the previous exam. First, randomly from all questions not on previous exam. Should also result in higher chance of passing.
 
@@ -133,6 +145,20 @@ Dataset:  `# id:0.332:0.5-0.524:2-0.308:2-0`
 <br>
 
 **Section 5:** Code for Q1 (g).
+```matlab
+
+```
+
+<br>
+
+**Section 6:** Code for Q1 (h) A.
+```matlab
+
+```
+
+<br>
+
+**Section 7:** Code for Q1 (h) B.
 ```matlab
 
 ```
