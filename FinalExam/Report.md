@@ -111,7 +111,19 @@ Here the legend refers to the student's approach when studying topics. As can be
 
 Dataset:  `# id:0.332:0.5-0.524:2-0.308:2-0`
 
-#### (a)  
+#### (a)  
+
+![Question 1](images/Q2_a_1.png)
+![Question 2](images/Q2_a_2.png)
+![Question 3](images/Q2_a_3.png)
+
+When comparing each of these questions, we can see a clear trend with each question. In the case of the first question, a large number of students got full marks. There is a cluster at each end with students trending towards doing very well or quite poorly. The question could have a relatively simple answer in a topic that would be easy to answer well if the student studied the topic but would be very hard to pass if they had not studied the topic.
+
+The second question has a more central distribution with few students failing (<40%) but none doing exceptionally well. Most scores are clustered around the 50% mark. This seems to show that it was relatively easy to pass but very hard to do well. It also implies that most students were prepared for this question.
+
+Question 3 was reasonable,  
+allowed students to excel  
+Looks like a well balanced question
 
 
 
@@ -163,6 +175,13 @@ Dataset:  `# id:0.332:0.5-0.524:2-0.308:2-0`
 <br>
 
 **Section 7:** Code for Q1 (h) B.
+```matlab
+
+```
+
+<br>
+
+**Section 8:** Code for Q2 (a).
 ```matlab
 
 ```
