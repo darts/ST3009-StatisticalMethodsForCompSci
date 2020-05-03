@@ -82,7 +82,7 @@ These results seem very reasonable as both are quite close to $95\%$. With a dif
 
 #### (h)
 
-Case A - More likely to appear after being on last exam:  
+**Case A** - More likely to appear after being on last exam:  
 The student could modify their approach as follows:  
 The first 3 topics studied will be the ones on the previous exam. After this, they will be chosen at random from all remaining topics. This approach should heavily increase the likelihood of passing depending on how predictable the exam is.  
 The simulation was modified as follows:  
@@ -92,14 +92,18 @@ Here the legend refers to the % probability that a question will appear on this 
 In the case of a completely random exam, each question has a $30\%$ chance of appearing on the paper. Here we can see what happens when we chance that probability from 30-100% in intervals of 10%.  
 
 
-Case B - Less likely to appear after being on the last exam:  
+**Case B** - Less likely to appear after being on the last exam:  
 In this case the student would take a different approach:  
 The last 3 questions studied would be those in last year's exam. All others would be chosen at random.  
-When running the sim, plot range of likelihoods ie. with the chance of each question appearing in the ranges of 30-0% in intervals of 5%.  
-Last 3 topics studied will be the ones on the previous exam. First, randomly from all questions not on previous exam. Should also result in higher chance of passing.
+The code for this operates in a similar manner to Case A where percentages go from $0\rightarrow30\%$ in intervals of $5\%$.
+![Graph of chance of passing vs predicability 2](images/Q1_h_b_line.png)
+Again the legend refers to the probability (in %) that a question will appear on this year's exam, given that it was on last year's exam.
+In this case, the chance of passing was not increased as drastically as in the previous case where a question is more likely to appear 2 exams in a row. It does reduce the number of topics required to be studied from 9 to 6 if the exam is perfectly predictable and the student wants to guarantee that they will pass.
 
-Assuming exam is predictable, it is not but uses strategy anyway.  
-(I presume this shouldn't make much of a difference as the chance of any question appearing is then even so the order we study them in should make no difference.)
+**Case C** - The exam is not predictable but the student assumes it is:  
+Here we apply all 3 strategies of studying: random selection, prioritising questions that **were** on last year's exam, prioritising questions that **were not** on last year's exam. The results should be the same for all 3 as all questions have the same probability of appearing but we will run the simulation anyway.
+![Study pref vs chance of passing](images/Q1_h_c_line.png)  
+Here the legend refers to the student's approach when studying topics. As can be seen in the graph, there is no advantage to any of the study methods when the exam is randomised. While the results are not exactly the same, they are close enough to be considered equal for the sample size. This also means that there is no disadvantage to the student for assuming the exam is predictable, when it is not.
 
 <br><br>
 
