@@ -125,21 +125,37 @@ Question 3 was reasonable,
 allowed students to excel  
 Looks like a well balanced question
 
+#### (b)  
 
+The following two graphs illustrate the conditioned mean and variance for Q2 & Q3 based on results in Q1.
 
+![Means](images/Q2_b_mean.png)
+
+![Variance](images/Q2_b_var.png)
+
+Here the mean follows a general upward trend, where students who performed well in the first question generally also did well in the subsequent 2. However the variance is very high.
+
+I did not use binning to group the data. In this case all scores are in groups of $5\%$ however they are not binned as all results in the dataset were multiples of $5\%$. It could be useful to bin the results in batches of $10\%$ as these are generally what grade lines are based on eg. the difference between a 2nd and a 1st is $10\%+$, more granular measurements of grades are not pertinent to the final grade.  
+In the case of real-world data where results are not multiples of $5\%$, binning would be important, as it would mostly likely be a waste of time to compare exact scores, in this case I would again use bins of $5\%$.
+
+#### (c)
+
+x axis is q1 mark.  
+y axis is mean for q2 & 3.  
+error bars for all.
 
 <br><br><br><br>
 
 ### Appendix
 
-**Section 1:** Code used to generate the plot in Q1 (c).
+**Section 1:** Code for Q1 (c).
 ```matlab
 
 ```
  
 <br>
 
-**Section 2:** Code used to generate the plot in Q1 (d).
+**Section 2:** Code for Q1 (d).
 ```matlab
 
 ```
@@ -182,6 +198,20 @@ Looks like a well balanced question
 <br>
 
 **Section 8:** Code for Q2 (a).
+```matlab
+
+```
+
+<br>
+
+**Section 9:** Code for Q2 (b).
+```matlab
+
+```
+
+<br>
+
+**Section 10:** Code for Q2 (c).
 ```matlab
 
 ```
