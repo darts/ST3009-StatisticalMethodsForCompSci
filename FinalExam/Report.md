@@ -18,6 +18,8 @@ p(none)+p(exactly 1)
 p(none) = $\frac{\binom{10-n}{3}}{\binom{10}{3}}$ where $0<=n<=7$, outside of this range $P=0$  
 p(exactly 1) = $\frac{\binom{n}{1}*\binom{9-n}{2}}{\binom{10}{3}}$, where $1<=n<=8$, outside of this range $P=0$  
 
+<img src="images/Q1_c.png" alt="Graph of P(failure) with 3 questions on exam" width="300"/>
+
 <!-- ![Graph of P(failure) with 3 questions on exam](images/Q1_c.png) -->
 
 #### (d)  
@@ -25,6 +27,8 @@ p(exactly 1) = $\frac{\binom{n}{1}*\binom{9-n}{2}}{\binom{10}{3}}$, where $1<=n<
 p(none)+p(exactly 1)  
 p(none) = $\frac{\binom{10-n}{4}}{\binom{10}{4}}$, where $0<=n<=6$, outside of this range $P=0$  
 p(exactly 1) = $\frac{\binom{n}{1}*\binom{10-n}{3}}{\binom{10}{4}}$, where $1<=n<=7$, outside of this range $P=0$  
+
+<img src="images/Q1_d.png" alt="Graph of P(failure) with 4 questions on exam" width="300"/>
 
 <!-- ![Graph of P(failure) with 4 questions on exam](images/Q1_d.png) -->
 
@@ -87,7 +91,11 @@ The student could modify their approach as follows:
 The first 3 topics studied will be the ones on the previous exam. After this, they will be chosen at random from all remaining topics. This approach should heavily increase the likelihood of passing depending on how predictable the exam is.  
 The simulation was modified as follows:  
 A 'past exam' was generated, representing the previous year's exam. Based on how predicatable this year's exam is, the questions from the previous exam were more likely to be selected this year. The student's approach to the exam was to first study the previous exam and then all other topics.  
-![Graph of chance of passing vs predictability](images/Q1_h_line.png)
+
+<img src="images/Q1_h_line.png" alt="Graph of chance of passing vs predictability" width="300"/>
+
+<!-- ![Graph of chance of passing vs predictability](images/Q1_h_line.png) -->
+
 Here the legend refers to the % probability that a question will appear on this year's exam, given that it appeared last year. The simulation was run for $N=1,000$ for all values. As can be clearly seen in this chart: a more predictable exam will result in a much higher chance of passing.
 In the case of a completely random exam, each question has a $30\%$ chance of appearing on the paper. Here we can see what happens when we chance that probability from 30-100% in intervals of 10%.  
 
@@ -96,13 +104,22 @@ In the case of a completely random exam, each question has a $30\%$ chance of ap
 In this case the student would take a different approach:  
 The last 3 questions studied would be those in last year's exam. All others would be chosen at random.  
 The code for this operates in a similar manner to Case A where percentages go from $0\rightarrow30\%$ in intervals of $5\%$.
-![Graph of chance of passing vs predicability 2](images/Q1_h_b_line.png)
+
+<img src="images/Q1_h_b_line.png" alt="Graph of chance of passing vs predicability 2" width="300"/>
+
+<!-- ![Graph of chance of passing vs predicability 2](images/Q1_h_b_line.png) -->
+
 Again the legend refers to the probability (in %) that a question will appear on this year's exam, given that it was on last year's exam.
 In this case, the chance of passing was not increased as drastically as in the previous case where a question is more likely to appear 2 exams in a row. It does reduce the number of topics required to be studied from 9 to 6 if the exam is perfectly predictable and the student wants to guarantee that they will pass.
 
 **Case C** - The exam is not predictable but the student assumes it is:  
 Here we apply all 3 strategies of studying: random selection, prioritising questions that **were** on last year's exam, prioritising questions that **were not** on last year's exam. The results should be the same for all 3 as all questions have the same probability of appearing but we will run the simulation anyway.
-![Study pref vs chance of passing](images/Q1_h_c_line.png)  
+
+<img src="images/Q1_h_c_line.png" alt="Study pref vs chance of passing" width="300"/>
+
+<!-- ![Study pref vs chance of passing](images/Q1_h_c_line.png)   -->
+
+
 Here the legend refers to the student's approach when studying topics. As can be seen in the graph, there is no advantage to any of the study methods when the exam is randomised. While the results are not exactly the same, they are close enough to be considered equal for the sample size. This also means that there is no disadvantage to the student for assuming the exam is predictable, when it is not.
 
 <br><br>
@@ -113,9 +130,14 @@ Dataset:  `# id:0.332:0.5-0.524:2-0.308:2-0`
 
 #### (a)  
 
-![Question 1](images/Q2_a_1.png)
-![Question 2](images/Q2_a_2.png)
-![Question 3](images/Q2_a_3.png)
+
+<img src="images/Q2_a_1.png" alt="Question 1" width="300"/>
+<img src="images/Q2_a_2.png" alt="Question 2" width="300"/>
+<img src="images/Q2_a_3.png" alt="Question 3" width="300"/>
+
+<!-- ![Question 1](images/Q2_a_1.png) -->
+<!-- ![Question 2](images/Q2_a_2.png) -->
+<!-- ![Question 3](images/Q2_a_3.png) -->
 
 When comparing each of these questions, we can see a clear trend with each question. In the case of the first question, a large number of students got full marks. There is a cluster at each end with students trending towards doing very well or quite poorly. The question could have a relatively simple answer in a topic that would be easy to answer well if the student studied the topic but would be very hard to pass if they had not studied the topic.
 
@@ -129,7 +151,11 @@ Looks like a well balanced question
 
 The following two graphs illustrate the conditioned mean and variance for Q2 & Q3 based on results in Q1.
 
+<img src="images/Q2_b_mean.png" alt="Means" width="300"/>
+
 <!-- ![Means](images/Q2_b_mean.png) -->
+
+<img src="images/Q2_b_var.png" alt="Variance" width="300"/>
 
 <!-- ![Variance](images/Q2_b_var.png) -->
 
@@ -144,10 +170,21 @@ using CLT
  
 $\sigma = \sqrt{variance}$  
 $\mu \plusmn 1.96 * \frac{\sigma}{\sqrt{N}}$
-![Mean with error bars](images/Q2_c.png)
+
+<img src="images/Q2_c.png" alt="Mean with error bars" width="300"/>
+
+<!-- ![Mean with error bars](images/Q2_c.png) -->
+
+Q2 is easier in general.
+
 x axis is q1 mark.  
 y axis is mean for q2 & 3.  
 error bars for all.
+
+#### (d)
+
+
+
 
 <br><br><br><br>
 
