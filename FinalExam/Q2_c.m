@@ -32,20 +32,29 @@ for i = 1:szA(1)
     cQ(2, floor(A(i,1)/5)+1) = cQ(2, floor(A(i,1)/5)+1) + 1;
 end
 
-errlow = 
-errhigh = 
+errlow = zeros(2,21);
+errhigh = zeros(2,21);
 
+szRes = size(resArr);
+for i = 1:szRes(2)
+    errlow(1,i) = (-1.96) * (sqrt(varQ(1,i))/ sqrt(cQ(1,i)));
+    errhigh(1,i) = (1.96) * (sqrt(varQ(1,i))/ sqrt(cQ(1,i)));
+    errlow(2,i) = (-1.96) * (sqrt(varQ(2,i))/ sqrt(cQ(2,i)));
+    errhigh(2,i) = (1.96) * (sqrt(varQ(2,i))/ sqrt(cQ(2,i)));
+end
+model_series = (resArr ./ cQ)';
+model_error = errhigh';
+bar(idx,model_series, 'grouped');
+hold on %manually calculate error bar positions
+ngroups = size(model_series, 1);
+nbars = size(model_series, 2);
+groupwidth = min(0.8, nbars/(nbars + 1.5));
+for i = 1:nbars
+    x = (((1:ngroups) - groupwidth/2 + (2*i-1) * groupwidth / (2*nbars))*5)-5;
+    errorbar(x, model_series(:,i), model_error(:,i), 'k', 'linestyle', 'none');
+end
 
-bar(idx,(resArr ./ cQ)')
 legend('Question 2','Question 3')
 xlabel('Score in Q1')
 ylabel('Score in Q2/Q3')
-title('Mean Conditioned Mark w/ Confidence Intervals')
-
-hold on
-
-er = errorbar(idx,(resArr ./ cQ)',errlow,errhigh);    
-er.Color = [0 0 0];                            
-er.LineStyle = 'none';  
-
-hold off
+title('Mean Conditioned Mark w/ 95% Confidence Intervals')

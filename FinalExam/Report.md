@@ -129,9 +129,9 @@ Looks like a well balanced question
 
 The following two graphs illustrate the conditioned mean and variance for Q2 & Q3 based on results in Q1.
 
-![Means](images/Q2_b_mean.png)
+<!-- ![Means](images/Q2_b_mean.png) -->
 
-![Variance](images/Q2_b_var.png)
+<!-- ![Variance](images/Q2_b_var.png) -->
 
 Here the mean follows a general upward trend, where students who performed well in the first question generally also did well in the subsequent 2. However the variance is very high.
 
@@ -140,6 +140,11 @@ In the case of real-world data where results are not multiples of $5\%$, binning
 
 #### (c)
 
+using CLT 
+ 
+$\sigma = \sqrt{variance}$  
+$\mu \plusmn 1.96 * \frac{\sigma}{\sqrt{N}}$
+![Mean with error bars](images/Q2_c.png)
 x axis is q1 mark.  
 y axis is mean for q2 & 3.  
 error bars for all.
