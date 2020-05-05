@@ -183,8 +183,22 @@ error bars for all.
 
 #### (d)
 
+Single input-variable linear regression.  
+Least squares fit.  
+Line through data, find line of least squares.
+
+Not really suitable as the data isn't linear.  
+Would have to take into account the distribution of the questions.  
+
+Idk what type of randomness is being talked about.  
+Not really ideal for exams.
 
 
+#### (e)  
+
+
+
+#### (f)
 
 <br><br><br><br>
 
