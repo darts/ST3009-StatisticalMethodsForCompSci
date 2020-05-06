@@ -97,7 +97,7 @@ A 'past exam' was generated, representing the previous year's exam. Based on how
 <!-- ![Graph of chance of passing vs predictability](images/Q1_h_line.png) -->
 
 Here the legend refers to the % probability that a question will appear on this year's exam, given that it appeared last year. The simulation was run for $N=1,000$ for all values. As can be clearly seen in this chart: a more predictable exam will result in a much higher chance of passing.
-In the case of a completely random exam, each question has a $30\%$ chance of appearing on the paper. Here we can see what happens when we chance that probability from 30-100% in intervals of 10%.  
+In the case of a completely random exam, each question has a $1/10+1/9+1/8 = 33.6\%$ chance of appearing on the paper. Here we can see what happens when we chance that probability from 30-100% in intervals of 10%.  
 
 
 **Case B** - Less likely to appear after being on the last exam:  
@@ -173,7 +173,7 @@ $\mu \plusmn 1.96 * \frac{\sigma}{\sqrt{N}}$
 
 <img src="images/Q2_c.png" alt="Mean with error bars" width="300"/>
 
-<!-- ![Mean with error bars](images/Q2_c.png) -->
+![Mean with error bars](images/Q2_c.png)
 
 Q2 is easier in general.
 
@@ -182,6 +182,11 @@ y axis is mean for q2 & 3.
 error bars for all.
 
 #### (d)
+
+In this case we would be using linear regression to find a least-squares fit.  
+Plot the data of $Score(Q1)$ vs $Score(Q2)$. Draw a line through the data that seems reasonable. Rate the accuracy by tallying the total value given by getting the distance from each point to the line and squaring it.  
+Adjust the line and repeat.
+Repeat this until an optimal solution is reached.
 
 Single input-variable linear regression.  
 Least squares fit.  
@@ -196,9 +201,18 @@ Not really ideal for exams.
 
 #### (e)  
 
-
+Take a guess
 
 #### (f)
+
+1. Pick a random value for $S_i$ and $D_j$.  
+2. Test these values in the expression we have for $X_{ij}$.  
+3. Test for each variable $S_i$ and $D_j$, test values that are higher and lower by some amount $x$. This will allow us to determine the slope and what our next estimate for our varaibles should be.  
+4. Choose the values for $S_i$ and $D_j$ that result in the best $X_{ij}$ and repeat steps 2-4 until a desired accuracy is reached.
+
+The value of $x$ must be carefully chosen as a value too small will take a long time to reach an optimal answer and a value that is too large may miss the optimal answer completely.  
+It is possible to modify $x$ so that it is initially large but reduces when the the function starts reducing accuracy. This would allow for faster progress during initial iterations while also allowing for increased accuracy in later iterations.
+
 
 <br><br><br><br>
 
