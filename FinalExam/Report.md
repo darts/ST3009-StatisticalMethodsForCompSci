@@ -6,17 +6,22 @@
 
 #### (a)
 
-$\binom{10}{3}=120$ possible combinations. There are 10 possible questions, we choose 3 of those 10.
+$\binom{10}{3}=120$ possible combinations. There are 10 possible questions, we choose 3 of those 10 without replacement.
 
 #### (b)
 
-$\frac{\binom{10-n}{3}}{\binom{10}{3}}$ where $0<=n<=7$. If $n>7$, the the probability of none of the questions studied appearing = 0  
+$\frac{\binom{10-n}{3}}{\binom{10}{3}}$ where $0<=n<=7$. If $n>7$, $P(none)=0$.  
+If we assume that none of the $n$ topics we studied appear on the exam, that means the exam was a combination of all other topics ie. $10-n$. We divide this by the total possible number of exams to get the probablilty that none appear.
+As there are 3 questions on the exam and the student must have not studied at least 3 topics for a full exam to include none of the topics studied.
 
 #### (c)  
 
-p(none)+p(exactly 1)  
-p(none) = $\frac{\binom{10-n}{3}}{\binom{10}{3}}$ where $0<=n<=7$, outside of this range $P=0$  
-p(exactly 1) = $\frac{\binom{n}{1}*\binom{9-n}{2}}{\binom{10}{3}}$, where $1<=n<=8$, outside of this range $P=0$  
+To calculate this we add $P(none)$ and $P(exactly1)$, the probabilities that either none or only one of the topics studied appears on the paper.
+
+$P(none) = \frac{\binom{10-n}{3}}{\binom{10}{3}}$ where $0<=n<=7$, outside of this range $P=0$ as explained in $(b)$  
+
+$P(exactly 1) = \frac{\binom{n}{1}*\binom{9-n}{2}}{\binom{10}{3}}$, where $1<=n<=8$, outside of this range $P=0$.  
+To get this we get the number of exam combinations where $1$ of the $n$ topics we have studied appears and $2$ of the $9-n$ topics we haven't studied appear. To get the probability, we then divide this by the total number of possible exams. The following plot shows the probability of failing as $n$ increases.
 
 <img src="images/Q1_c.png" alt="Graph of P(failure) with 3 questions on exam" width="300"/>
 
@@ -24,29 +29,28 @@ p(exactly 1) = $\frac{\binom{n}{1}*\binom{9-n}{2}}{\binom{10}{3}}$, where $1<=n<
 
 #### (d)  
 
-p(none)+p(exactly 1)  
-p(none) = $\frac{\binom{10-n}{4}}{\binom{10}{4}}$, where $0<=n<=6$, outside of this range $P=0$  
-p(exactly 1) = $\frac{\binom{n}{1}*\binom{10-n}{3}}{\binom{10}{4}}$, where $1<=n<=7$, outside of this range $P=0$  
+Once again we add $P(none)$ and $P(exactly1)$, the probabilities that either none or only one of the topics studied appears on the paper.
+
+In this case:
+$P(none) = \frac{\binom{10-n}{4}}{\binom{10}{4}}$, where $0<=n<=6$, outside of this range $P=0$. This is similar to $(c)$: the number of 4-topic exam combinations that can be made with the $10-n$ topics that were not studied divided by the total number of exams. If $n>6$, $P(none)=0$ as each exam covers 4 topics and there are $<4$ unstudied topics.  
+
+$P(exactly 1) = \frac{\binom{n}{1}*\binom{10-n}{3}}{\binom{10}{4}}$, where $1<=n<=7$, outside of this range $P=0$. As previously: we will only fail is $1$ or less of our studied topics appears (as 2 are required to pass). Get all combinations of only one of the studied topics appearing on the exam divided by the total number of exams.  
 
 <img src="images/Q1_d.png" alt="Graph of P(failure) with 4 questions on exam" width="300"/>
 
 <!-- ![Graph of P(failure) with 4 questions on exam](images/Q1_d.png) -->
 
-**COMPARE WITH RESULTS FROM PART (C)**  
-The chance of failing is much lower.  
-This is due to the additional question on the exam.  
-Do some maths on the percentage difference at each point.  
-Still need to answer 2 questions to pass but more likely that you will have studied at least 2.  
-Far less likely that will have studied none of 4 vs. none of 3.
-
+In the case of this exam, where there are 4 topics on the paper, the probability of failing is much lower overall.  
+Studying at least 8 topics will guarantee a passing grade on the latter exam, compared to the 9 required in the first exam. This is due to the same number of questions that must be answered to pass but in the case of the latter exam, there is a higher probability that the exam will contain at least 2 of the studied topics.  
+Therefore if the standard of questions on both exams is equal, the 4-topic exam will have a higher pass rate.
 
 #### (e)
 
-The code generates 2 lists of numbers 0-10. It selects the first 3 from one and first n from the other. If there is an overlap of more than 1 ie. student passes exam, it returns 1, otherwise 0.
+The code generates 2 random lists of numbers 0-10. It selects the first 3 from one (the exam) and first $n$ from the other (the topics studied). If there is an overlap of more than 1 ie. more than 1 of the topics studied appears and student passes exam, it returns 1, otherwise 0.
 
 #### (f)
 
-Call function from (e) N times and return the mean
+Call function from $(e)$ N times and return the mean
 
 Searching for range $[\mu-2\sigma, \mu+2\sigma]$
 $$
@@ -60,7 +64,7 @@ $$
 E[X_i]\plusmn2\sqrt{\frac{var(X_i)}{N}}
 $$
 
-Using (c):  
+Using $(c)$:  
 $1-E[X_i]=0.1833, E[X_i]=0.8167$ when $n=7$.  
 $var(X_i)=\mu*(1-\mu)=0.8167*0.1833=0.1497$
 
@@ -76,10 +80,13 @@ $0.8167\plusmn0.00773$
 $[0.80897,0.82443]$
 
 #### (g)  
-***Change this a bit***  
-The simulation generates a new set of topics studied by a student and a set of topics to appear on the exam for each N. It then verifies if the student has passed the exam and uses the series of values to calculate the mean, Y.  
-For each iteration of the simulation, the resulting Y is compared to the confidence interval and if it lands within the interval it is added to a counter. When all X simulations have been run, this counter is divided by X to find what percentage was within the confidence interval.  
-I chose an X of $1,000$. The reason for this is that we are already using values of $N=1,000,N=10,000$ resulting in a total number of iterations of $1,000,000$ and $10,000,000$ respectively. This number is more than large enough to provide an accurate result. Running time was also unreasonable when $X>1,000$ which did factor into the decision.  
+
+At every iteration of the simulation the following is done $N$ times: a new exam and a new set of studied topics is generated. After this, it is determined if the student has passes the exam ie. more than 1 of the studied topics is on the exam. It then uses this to calculate the mean $Y$.  
+
+Each time this is done, the value of $Y$ is compared to the confidence interval and if it is within the confidence interval it is added to a tally. When the simulations have run, this number is divided by $X$ to find the percentage of results that landed within the confidence interval.
+
+I chose the value of $X$ to be $1,000$. The reason for this is that we are already using quite large values for $N$: $N=1,000,N=10,000$ resulting in a total number of iterations of $1,000,000$ and $10,000,000$ respectively. This number is more than large enough to provide an accurate result. Running time was also unreasonable when $X>1,000$ which did factor into the decision.  
+
 In the case of $N=1,000$ the simulation resulted in an accuracy of $95.4\%$.  
 In the case of $N=10,000$ the simulation resulted in an accuracy of $94.9\%$.  
 These results seem very reasonable as both are quite close to $95\%$. With a different seed for the random number generator the result could be slightly different but both results are acceptably close to $95\%$.
@@ -212,7 +219,6 @@ Take a guess
 
 The value of $x$ must be carefully chosen as a value too small will take a long time to reach an optimal answer and a value that is too large may miss the optimal answer completely.  
 It is possible to modify $x$ so that it is initially large but reduces when the the function starts reducing accuracy. This would allow for faster progress during initial iterations while also allowing for increased accuracy in later iterations.
-
 
 <br><br><br><br>
 

@@ -4,7 +4,7 @@ high = 0.3;
 steps = 0.05;
 runs = 1000;
 resMat = zeros(10, 3);
-legArr = [{'random'}, {'in-last'}, {'not-in-last'}]
+legArr = [{'random'}, {'in-last'}, {'not-in-last'}];
 
 
 for i = 0:10
@@ -27,6 +27,7 @@ line(idx, resMat)
 legend(legArr)
 xlabel("Questions Studied")
 ylabel("P(Pass)")
+title("Probability of passing random exam when applying different strategies")
 
 
 

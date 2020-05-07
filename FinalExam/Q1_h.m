@@ -9,7 +9,7 @@ legArr = zeros(1, cast((high-low)/steps,'uint8'));
 for i = 0:((high-low)/steps)+1
    legArr(i+1) = cast((low+i*steps)*100,'uint8');
 end    
-legArr = string(legArr)
+legArr = string(legArr);
 
 
 for i = 0:10
@@ -30,7 +30,7 @@ line(idx, resMat)
 legend(legArr)
 xlabel("Questions Studied")
 ylabel("P(Pass)")
-
+title("Probability of Passing where questions are more likely to appear twice")
 
 
 function X = stoSim3 (n, predictability)
