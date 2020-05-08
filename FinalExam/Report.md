@@ -146,17 +146,18 @@ Dataset:  `# id:0.332:0.5-0.524:2-0.308:2-0`
 <!-- ![Question 2](images/Q2_a_2.png) -->
 <!-- ![Question 3](images/Q2_a_3.png) -->
 
-When comparing each of these questions, we can see a clear trend with each question. In the case of the first question, a large number of students got full marks. There is a cluster at each end with students trending towards doing very well or quite poorly. The question could have a relatively simple answer in a topic that would be easy to answer well if the student studied the topic but would be very hard to pass if they had not studied the topic.
+When comparing each of these questions, we can see a clear trend with each question. In the case of the first question, a large number of students got full marks. There is also a cluster at each end with students trending towards doing very well or very poorly. This distribution of marks could hint at a question that was not inherently difficult but may have been a niche topic to study. A question with a specific answer that wasn't difficult if studied but hard to guess (hence the lack of scores around 50%).
 
 The second question has a more central distribution with few students failing (<40%) but none doing exceptionally well. Most scores are clustered around the 50% mark. This seems to show that it was relatively easy to pass but very hard to do well. It also implies that most students were prepared for this question.
 
-Question 3 was reasonable,  
-allowed students to excel  
-Looks like a well balanced question
+Question 3 seems to have been a reasonable question. Most students passed with a mark of ~50% but the results also tailed upwards implying that it allowed students who worked hard or were very well prepared to perform to a higher standard. Therefore I would assume it is a well balanced question that was not very hard to achieve a passing grade in while also allowing students to distinguish themselves.
+
+This approach to evaluating the difficulty of questions has several advantages and disadvantages. Advantages include that it is very quick and easy to view the information as all it requires is plotting the results, it also provides information on the distribution of results.  
+However it doesn't show information about how individual students performed across the exams ie a student could do very well in one exam but poorly in another and this type on analysis would not show that.
 
 #### (b)  
 
-The following two graphs illustrate the conditioned mean and variance for Q2 & Q3 based on results in Q1.
+The following two graphs illustrate the conditioned mean and variance for Q2 & Q3 based on results in Q1. This was achieved by grouping each of the students based on their score in Q1 and and then plotting both their mark for Q2 & Q3 as well as the variance at each (calculated using the matlab $var$ function).
 
 <img src="images/Q2_b_mean.png" alt="Means" width="300"/>
 
@@ -173,42 +174,35 @@ In the case of real-world data where results are not multiples of $5\%$, binning
 
 #### (c)
 
-using CLT 
- 
-$\sigma = \sqrt{variance}$  
-$\mu \plusmn 1.96 * \frac{\sigma}{\sqrt{N}}$
+I used CLT to determine the mean conditioned mark with a 95% confidence interval. To do this we take the previous values for the mean and applying the following formulas using the calculated variance: $\sigma = \sqrt{variance}$, $\mu \plusmn 1.96 * \frac{\sigma}{\sqrt{N}}$. The resulting interval was then added to the mean mark as error bars (something that matlab doesn't natively support for grouped bar charts so they had to be placed manually).
 
 <img src="images/Q2_c.png" alt="Mean with error bars" width="300"/>
 
-![Mean with error bars](images/Q2_c.png)
+<!-- ![Mean with error bars](images/Q2_c.png) -->
 
-Q2 is easier in general.
+From these results we can determine several things:  
+Q3 was an easier question overall with results generally trending to be higher and fewer students failing the exam. There was generally a margin of $5-10\%$ between the conditioned mark for Q2 & Q3 ie. the score for Q3 was generally that much higher.  
+The pass rate for Q3 was higher, especially among students that failed Q1.  
+This data also shows that Q1 was dramatically harder than the other questions even students that got extremely low scores in Q1 still either passed or almost passed Q2 & Q3.  
 
-x axis is q1 mark.  
-y axis is mean for q2 & 3.  
-error bars for all.
 
 #### (d)
 
 In this case we would be using linear regression to find a least-squares fit.  
 Plot the data of $Score(Q1)$ vs $Score(Q2)$. Draw a line through the data that seems reasonable. Rate the accuracy by tallying the total value given by getting the distance from each point to the line and squaring it.  
 Adjust the line and repeat.
-Repeat this until an optimal solution is reached.
+Repeat this until an optimal solution is reached (the lowest resulting value).
 
-Single input-variable linear regression.  
-Least squares fit.  
-Line through data, find line of least squares.
+This approach is not ideally suited to this kind of prediction as the relationship in between the results is not linear. It might provide more accurate results by considering other factors such as the distribution of the results for each question when defining the model.  
 
-Not really suitable as the data isn't linear.  
-Would have to take into account the distribution of the questions.  
-
-Idk what type of randomness is being talked about.  
-Not really ideal for exams.
-
+In the case of linear regression, we expect the output to be a gaussian random variable ie. normally distributed about a mean with a variance of 1. In this case however the variance is much higher than this and unsuitable for this kind of analysis.
 
 #### (e)  
 
-Take a guess
+$X_{ij}=S_i-D_j$  
+If we take at $i$ and $j$: $P(S=s^{(i)}|\theta, x^{(i)} = \frac{1}{1+e^{-s^{(i)}\theta^Tx^{(i)}}}$  
+Since $S$ and $D$ are Gaussian random variables we can do the following: PDF of $S$ given that it has a mean $\theta ^Tx$ and variance 1 $\Rightarrow$ $f_S(s)=\frac{1}{\sqrt{2\pi}}e^{-\frac{(s-\theta^Tx)^2}{2}}$. Similarly for $D$ where mean is $\theta_1 ^{T_1}x_1 \Rightarrow f_D(d)=\frac{1}{\sqrt{2\pi}}e^{-\frac{(d-\theta_1^{T_1}x_1)^2}{2}}$. The result for $X$ is $\frac{1}{\sqrt{2\pi}}e^{-\frac{(s-\theta^Tx)^2}{2}}-\frac{1}{\sqrt{2\pi}}e^{-\frac{(d-\theta_1^{T_1}x_1)^2}{2}}$. When we then move to the log likelihoods assuming training data $d \Rightarrow f_{(D|\theta)}(d|\theta) =\begin{aligned} \prod^{m}_{i=1}\end{aligned}\frac{1}{\sqrt{2\pi}}e^{-\frac{(s^{(i)}-h_\theta(x^{(i)})^2}{2}}-\begin{aligned} \prod^{m}_{j=1}\end{aligned}\frac{1}{\sqrt{2\pi}}e^{-\frac{(D^{(j)}-h_\theta(x^{(j)})^2}{2}} \Rightarrow -log(\frac{1}{\sqrt{2\pi}^m})\sum^{m}_{i=1}\frac{(s^{(i)}-h_\theta (x^{(i)})^2)}{2}+log(\frac{1}{\sqrt{2\pi}^m})\sum^{m}_{j=1}\frac{(d^{(j)}-h_\theta (x^{(j)})^2)}{2}$
+
 
 #### (f)
 

@@ -32,18 +32,15 @@ for i = 1:szA(1)
     cQ(2, floor(A(i,1)/5)+1) = cQ(2, floor(A(i,1)/5)+1) + 1;
 end
 
-errlow = zeros(2,21);
-errhigh = zeros(2,21);
+err = zeros(2,21);
 
 szRes = size(resArr);
 for i = 1:szRes(2)
-    errlow(1,i) = (-1.96) * (sqrt(varQ(1,i))/ sqrt(cQ(1,i)));
-    errhigh(1,i) = (1.96) * (sqrt(varQ(1,i))/ sqrt(cQ(1,i)));
-    errlow(2,i) = (-1.96) * (sqrt(varQ(2,i))/ sqrt(cQ(2,i)));
-    errhigh(2,i) = (1.96) * (sqrt(varQ(2,i))/ sqrt(cQ(2,i)));
+    err(1,i) = (1.96) * (sqrt(varQ(1,i))/ sqrt(cQ(1,i)));
+    err(2,i) = (1.96) * (sqrt(varQ(2,i))/ sqrt(cQ(2,i)));
 end
 model_series = (resArr ./ cQ)';
-model_error = errhigh';
+model_error = err';
 bar(idx,model_series, 'grouped');
 hold on %manually calculate error bar positions
 ngroups = size(model_series, 1);
