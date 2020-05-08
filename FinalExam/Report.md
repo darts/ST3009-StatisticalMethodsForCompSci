@@ -214,74 +214,511 @@ Since $S$ and $D$ are Gaussian random variables we can do the following: PDF of 
 The value of $x$ must be carefully chosen as a value too small will take a long time to reach an optimal answer and a value that is too large may miss the optimal answer completely.  
 It is possible to modify $x$ so that it is initially large but reduces when the the function starts reducing accuracy. This would allow for faster progress during initial iterations while also allowing for increased accuracy in later iterations.
 
-<br><br><br><br>
+<p style="page-break-before: always">
 
-### Appendix
+### **Appendix**
 
 **Section 1:** Code for Q1 (c).
 ```matlab
+rng(221);
+arr = zeros(1,11);
+idx = [0:10];
 
+for n = 1:11
+    arr(n) = exactNone(n-1)+exactOne(n-1);
+end
+bar(idx, arr)
+title("Probability of failing exam when studying n questions (3 questions on paper)")
+xlabel("n")
+ylabel("P(failure)")
+
+%returns probability that none of the studied topics appear
+function X = exactNone (n)
+    if n<=7
+        X = nchoosek(10-n,3)/nchoosek(10,3);
+    else
+        X = 0;
+    end
+end
+
+%returns probability that exactly one of the studied topics appears
+function X = exactOne (n)
+    if n <= 8 & n >=1
+        X = (nchoosek(n,1)*nchoosek(10-n,2))/nchoosek(10,3);
+    else
+        X = 0;
+    end
+end
 ```
  
 <br>
 
 **Section 2:** Code for Q1 (d).
 ```matlab
+rng(221);
+arr = zeros(1,11);
+idx = [0:10];
 
+for n = 1:11
+    arr(n) = exactNone(n-1)+exactOne(n-1);
+end
+bar(idx, arr)
+title("Probability of failing exam when studying n questions (4 questions on paper)")
+xlabel("n")
+ylabel("P(failure)")
+
+%returns probability that none of the studied topics appear
+function X = exactNone (n)
+    if n<=6
+        X = nchoosek(10-n,4)/nchoosek(10,4);
+    else
+        X = 0;
+    end
+end
+
+%returns probability that exactly one of the studied topics appears
+function X = exactOne (n)
+    if n <= 7 & n >=1
+        X = (nchoosek(n,1)*nchoosek(10-n,3))/nchoosek(10,4);
+    else
+        X = 0;
+    end
+end
 ```
 
 <br>
 
 **Section 3:** Code for Q1 (e).
 ```matlab
-
+rng(221);
+stoSim3(1)
+function X = stoSim3 (n)
+    choice = randperm(10); %get elements in random order
+    choice = choice(1:3); %select 3 questions for exam
+    studied = randperm(10); %random order of studied qs
+    studied = studied(1:n); %n number of studied qs
+    overlap = setdiff(choice, studied); %studied vs exam
+    if numel(overlap) < 2 %if at least 2 studied appear
+        X = 1;
+    else
+        X = 0;
+    end
+end
 ```
 
 <br>
 
 **Section 4:** Code for Q1 (f).
 ```matlab
+rng(221);
+extSim(1000)
+function X = stoSim3 (n)
+    choice = randperm(10); %get elements in random order
+    choice = choice(1:3); %select 3 questions for exam
+    studied = randperm(10); %random order of studied qs
+    studied = studied(1:n); %n number of studied qs
+    overlap = setdiff(choice, studied); %studied vs exam
+    if numel(overlap) < 2 %if at least 2 studied appear
+        X = 1;
+    else
+        X = 0;
+    end
+end
 
+function Y = extSim(N)
+    generated = randi(11,[1,N])-1;
+    Y = 0;
+    for i = 1:numel(generated)
+        Y = Y + stoSim3(7);
+    end
+    Y = Y/N;
+end
 ```
 
 <br>
 
 **Section 5:** Code for Q1 (g).
 ```matlab
+rng(221);
+%N = 1000; %a
+N = 10000; %b
+runs = 1000;
+freq = zeros([1,runs]);
+%lowerBound = 0.79223; %a
+%upperBound = 0.84117; %a
+lowerBound = 0.80897; %b
+upperBound = 0.82443; %b
+perBound = 0;
 
+for i = 1:runs
+    freq(i) = extSim(N);
+    if freq(i) > lowerBound & freq(i) < upperBound
+       perBound = perBound + 1; 
+    end
+end
+perBound = perBound/runs
+hist(freq)
+
+
+function X = stoSim3 (n)
+    choice = randperm(10); %get elements in random order
+    choice = choice(1:3); %select 3 questions for exam
+    studied = randperm(10); %random order of studied qs
+    studied = studied(1:n); %n number of studied qs
+    overlap = setdiff(choice, studied); %studied vs exam
+    if numel(overlap) < 2 %if at least 2 studied appear
+        X = 1;
+    else
+        X = 0;
+    end
+end
+
+function Y = extSim(N)
+    generated = randi(11,[1,N])-1;
+    Y = 0;
+    for i = 1:numel(generated)
+        Y = Y + stoSim3(7);
+    end
+    Y = Y/N;
+end
 ```
 
 <br>
 
 **Section 6:** Code for Q1 (h) A.
 ```matlab
+rng(221);
+low = 0.30;
+high = 1;
+steps = 0.1;
+runs = 1000;
+resMat = zeros(10, cast((high-low)/steps,'uint8'));
+legArr = zeros(1, cast((high-low)/steps,'uint8'));
 
+for i = 0:((high-low)/steps)+1
+   legArr(i+1) = cast((low+i*steps)*100,'uint8');
+end    
+legArr = string(legArr);
+
+
+for i = 0:10
+    step = 1;
+   while step < ((high-low)/steps)+2
+       pred = low + ((step-1)*steps);
+       xSum = 0;
+       for j = 1:runs
+           xSum = xSum + stoSim3(i, pred);
+       end
+       resMat(i+1, step) = xSum/runs;
+       step = step + 1; 
+   end
+end
+idx = [0:10];
+% bar(idx,resMat)
+line(idx, resMat)
+legend(legArr)
+xlabel("Questions Studied")
+ylabel("P(Pass)")
+title("Probability of Passing where questions are more likely to appear twice")
+
+
+function X = stoSim3 (n, predictability)
+    oldpaper = randperm(10); %get elements in random order
+    newpaper = zeros(1,3);
+    newIndex = 1;
+    for i = 1:3 %pull answers from old paper with some probability
+       x = rand;
+       if(x < predictability)
+           newpaper(newIndex) = oldpaper(i);
+       else
+           newpaper(newIndex) = oldpaper(i+3);
+       end
+       newIndex = newIndex + 1;
+    end
+    studied = randperm(10); %random order of studied qs
+    for i = 1:3 %reorder studied qs so that previous exam qs are first
+        swpIndex = find(studied == oldpaper(i));
+        studied([i swpIndex]) = studied([swpIndex i]);
+    end
+    studied = studied(1:n); %n number of studied qs
+    overlap = setdiff(newpaper, studied); %studied vs exam
+    if numel(overlap) < 2 %if at least 2 studied appear
+        X = 1; %pass
+    else
+        X = 0; %fail
+    end
+end
 ```
 
 <br>
 
 **Section 7:** Code for Q1 (h) B.
 ```matlab
+rng(221);
+low = 0.0;
+high = 0.3;
+steps = 0.05;
+runs = 1000;
+resMat = zeros(10, cast((high-low)/steps,'uint8'));
+legArr = zeros(1, cast((high-low)/steps,'uint8'));
+
+for i = 0:((high-low)/steps)+1
+   legArr(i+1) = cast((low+i*steps)*100,'uint8');
+end    
+legArr = string(legArr);
+
+
+for i = 0:10
+    step = 1;
+   while step < ((high-low)/steps)+2
+       pred = low + ((step-1)*steps);
+       xSum = 0;
+       for j = 1:runs
+           xSum = xSum + stoSim3(i, pred);
+       end
+       resMat(i+1, step) = xSum/runs;
+       step = step + 1; 
+   end
+end
+idx = [0:10];
+% bar(idx,resMat)
+line(idx, resMat)
+legend(legArr)
+xlabel("Questions Studied")
+ylabel("P(Pass)")
+title("Probability of passing where questions are less likely to appear twice")
+
+
+function X = stoSim3 (n, predictability)
+    oldpaper = randperm(10); %get elements in random order
+    newpaper = zeros(1,3);
+    newIndex = 1;
+    for i = 1:3 %pull answers from old paper with some probability
+       x = rand;
+       if(x < predictability)
+           newpaper(newIndex) = oldpaper(i);
+       else
+           newpaper(newIndex) = oldpaper(i+3);
+       end
+       newIndex = newIndex + 1;
+    end
+    studied = randperm(10); %random order of studied qs
+    for i = 1:3 %reorder studied qs so that previous exam qs are last
+        swpIndex = find(studied == oldpaper(i));
+        studied([end-i swpIndex]) = studied([swpIndex end-i]);
+    end
+    studied = studied(1:n); %n number of studied qs
+    overlap = setdiff(newpaper, studied); %studied vs exam
+    if numel(overlap) < 2 %if at least 2 studied appear
+        X = 1; %pass
+    else
+        X = 0; %fail
+    end
+end
+```
+
+<br>
+
+**Section 8:** Code for Q1 (h) C.
+```matlab
+rng(221);
+low = 0.3;
+high = 0.3;
+steps = 0.05;
+runs = 1000;
+resMat = zeros(10, 3);
+legArr = [{'random'}, {'in-last'}, {'not-in-last'}];
+
+
+for i = 0:10
+    step = 1;
+   while step < ((high-low)/steps)+2
+       pred = low + ((step-1)*steps);
+       xSum = 0;
+       for j = 1:runs
+           xSum = xSum + stoSim3(i, pred);
+       end
+       resMat(i+1, 1) = xSum(1)/runs;
+       resMat(i+1, 2) = xSum(2)/runs;
+       resMat(i+1, 3) = xSum(3)/runs;
+       step = step + 1; 
+   end
+end
+idx = [0:10];
+% bar(idx,resMat)
+line(idx, resMat)
+legend(legArr)
+xlabel("Questions Studied")
+ylabel("P(Pass)")
+title("Probability of passing random exam when applying different strategies")
+
+
+
+function X = stoSim3 (n, predictability)
+    oldpaper = randperm(10); %get elements in random order
+    newpaper = zeros(1,3);
+    newIndex = 1;
+    for i = 1:3 %pull answers from old paper with some probability
+       x = rand;
+       if(x < predictability)
+           newpaper(newIndex) = oldpaper(i);
+       else
+           newpaper(newIndex) = oldpaper(i+3);
+       end
+       newIndex = newIndex + 1;
+    end
+    studied = randperm(10); %random order of studied qs
+    studiedRnd = studied(1:n);
+    for i = 1:3 %reorder studied qs so that previous exam qs are last
+        swpIndex = find(studied == oldpaper(i));
+        studied([end-i swpIndex]) = studied([swpIndex end-i]);
+    end
+    studiedA = studied(1:n); %n number of studied qs
+    studiedB = studied(end-n+1:end);
+    
+    X = [numel(setdiff(newpaper, studiedRnd)) < 2
+        numel(setdiff(newpaper, studiedA)) < 2
+        numel(setdiff(newpaper, studiedB)) < 2];
+end
+```
+
+<br>
+
+**Section 9:** Code for Q2 (a).
+```matlab
+A = readmatrix('dataset_answers', 'Delimiter', ' ');
+Q1 = A(:, 1);
+Q2 = A(:, 2);
+Q3 = A(:, 3);
+
+histogram(Q1, numel(unique(Q1)),'Normalization','probability')
+title('Question 1')
+xlabel('Grade')
+ylabel('P(Grade)=X')
+
+histogram(Q2, numel(unique(Q2)),'Normalization','probability')
+title('Question 2')
+xlabel('Grade')
+ylabel('P(Grade)=X')
+
+histogram(Q3, numel(unique(Q3)),'Normalization','probability')
+title('Question 3')
+xlabel('Grade')
+ylabel('P(Grade)=X')
 
 ```
 
 <br>
 
-**Section 8:** Code for Q2 (a).
+**Section 10:** Code for Q2 (b).
 ```matlab
+A = readmatrix('dataset_answers', 'Delimiter', ' ');
+A = sortrows(A, 1);
+resArr = zeros(2,21);
+szA = size(A);
+cQ = zeros(2,21);
+varQ= zeros(2,21);
+idx = [0:5:100]
 
+pre2 = 0;
+pre3 = 0;
+preIdx2 = 1;
+preIdx3 = 1;
+for i = 1:szA(1)
+    if A(i, 1) ~= pre2
+       varQ(1, floor(A(i,1)/5)) = var(A(preIdx2:i-1,2));
+       preIdx2 = i;
+       pre2 = A(i, 1);
+    end
+    if A(i, 1) ~= pre3
+       varQ(2, floor(A(i,1)/5)) = var(A(preIdx3:i-1,3));
+       preIdx3 = i;
+       pre3 = A(i, 1);
+    end
+end
+varQ(1, 21) = var(A(preIdx2:szA(1),2));
+varQ(2, 21) = var(A(preIdx3:szA(1),3));
+
+for i = 1:szA(1)
+    resArr(1,floor(A(i,1)/5)+1) = resArr(1,floor(A(i,1)/5)+1) + A(i,2);
+    resArr(2,floor(A(i,1)/5)+1) = resArr(2,floor(A(i,1)/5)+1) + A(i,3);
+    cQ(1, floor(A(i,1)/5)+1) = cQ(1, floor(A(i,1)/5)+1) + 1;
+    cQ(2, floor(A(i,1)/5)+1) = cQ(2, floor(A(i,1)/5)+1) + 1;
+end
+resArr
+
+bar(idx,(resArr ./ cQ)')
+legend('Question 2','Question 3')
+xlabel('Score in Q1')
+ylabel('Score in Q2/Q3')
+title('Mean Conditioned Mark')
+
+bar(idx, varQ')
+legend('Question 2','Question 3')
+xlabel('Score in Q1')
+ylabel('Variance of conditioned mean')
+title('Variance of Mean')
 ```
 
 <br>
 
-**Section 9:** Code for Q2 (b).
+**Section 11:** Code for Q2 (c).
 ```matlab
+A = readmatrix('dataset_answers', 'Delimiter', ' ');
+A = sortrows(A, 1);
+resArr = zeros(2,21);
+szA = size(A);
+cQ = zeros(2,21);
+varQ= zeros(2,21);
+idx = 0:5:100;
 
-```
+pre2 = 0;
+pre3 = 0;
+preIdx2 = 1;
+preIdx3 = 1;
+for i = 1:szA(1)
+    if A(i, 1) ~= pre2
+       varQ(1, floor(A(i,1)/5)) = var(A(preIdx2:i-1,2));
+       preIdx2 = i;
+       pre2 = A(i, 1);
+    end
+    if A(i, 1) ~= pre3
+       varQ(2, floor(A(i,1)/5)) = var(A(preIdx3:i-1,3));
+       preIdx3 = i;
+       pre3 = A(i, 1);
+    end
+end
+varQ(1, 21) = var(A(preIdx2:szA(1),2));
+varQ(2, 21) = var(A(preIdx3:szA(1),3));
 
-<br>
+for i = 1:szA(1)
+    resArr(1,floor(A(i,1)/5)+1) = resArr(1,floor(A(i,1)/5)+1) + A(i,2);
+    resArr(2,floor(A(i,1)/5)+1) = resArr(2,floor(A(i,1)/5)+1) + A(i,3);
+    cQ(1, floor(A(i,1)/5)+1) = cQ(1, floor(A(i,1)/5)+1) + 1;
+    cQ(2, floor(A(i,1)/5)+1) = cQ(2, floor(A(i,1)/5)+1) + 1;
+end
 
-**Section 10:** Code for Q2 (c).
-```matlab
+err = zeros(2,21);
 
+szRes = size(resArr);
+for i = 1:szRes(2)
+    err(1,i) = (1.96) * (sqrt(varQ(1,i))/ sqrt(cQ(1,i)));
+    err(2,i) = (1.96) * (sqrt(varQ(2,i))/ sqrt(cQ(2,i)));
+end
+model_series = (resArr ./ cQ)';
+model_error = err';
+bar(idx,model_series, 'grouped');
+hold on %manually calculate error bar positions
+ngroups = size(model_series, 1);
+nbars = size(model_series, 2);
+groupwidth = min(0.8, nbars/(nbars + 1.5));
+for i = 1:nbars
+    x = (((1:ngroups) - groupwidth/2 + (2*i-1) * groupwidth / (2*nbars))*5)-5;
+    errorbar(x, model_series(:,i), model_error(:,i), 'k', 'linestyle', 'none');
+end
+
+legend('Question 2','Question 3')
+xlabel('Score in Q1')
+ylabel('Score in Q2/Q3')
+title('Mean Conditioned Mark w/ 95% Confidence Intervals')
 ```

@@ -17,7 +17,6 @@ function Y = extSim(N)
     generated = randi(11,[1,N])-1;
     Y = 0;
     for i = 1:numel(generated)
-%         Y = Y + stoSim3(generated(i));
         Y = Y + stoSim3(7);
     end
     Y = Y/N;
