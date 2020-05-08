@@ -4,39 +4,30 @@
 
 ### Q1  
 
-#### (a)
+**(a)** $\binom{10}{3}=120$ possible combinations. There are 10 possible questions, we choose 3 of those 10 without replacement.
 
-$\binom{10}{3}=120$ possible combinations. There are 10 possible questions, we choose 3 of those 10 without replacement.
-
-#### (b)
-
-$\frac{\binom{10-n}{3}}{\binom{10}{3}}$ where $0<=n<=7$. If $n>7$, $P(none)=0$.  
-If we assume that none of the $n$ topics we studied appear on the exam, that means the exam was a combination of all other topics ie. $10-n$. We divide this by the total possible number of exams to get the probablilty that none appear.
+**(b)** $\frac{\binom{10-n}{3}}{\binom{10}{3}}$ where $0<=n<=7$. If $n>7$, $P(none)=0$. If we assume that none of the $n$ topics we studied appear on the exam, that means the exam was a combination of all other topics ie. $10-n$. We divide this by the total possible number of exams to get the probablilty that none appear.
 As there are 3 questions on the exam and the student must have not studied at least 3 topics for a full exam to include none of the topics studied.
 
 #### (c)  
 
 To calculate this we add $P(none)$ and $P(exactly1)$, the probabilities that either none or only one of the topics studied appears on the paper.
-
 $P(none) = \frac{\binom{10-n}{3}}{\binom{10}{3}}$ where $0<=n<=7$, outside of this range $P=0$ as explained in $(b)$  
-
 $P(exactly 1) = \frac{\binom{n}{1}*\binom{9-n}{2}}{\binom{10}{3}}$, where $1<=n<=8$, outside of this range $P=0$.  
 To get this we get the number of exam combinations where $1$ of the $n$ topics we have studied appears and $2$ of the $9-n$ topics we haven't studied appear. To get the probability, we then divide this by the total number of possible exams. The following plot shows the probability of failing as $n$ increases.
 
-<img src="images/Q1_c.png" alt="Graph of P(failure) with 3 questions on exam" width="300"/>
+<img src="images/Q1_c.png" alt="Graph of P(failure) with 3 questions on exam" width="350"/>
 
 <!-- ![Graph of P(failure) with 3 questions on exam](images/Q1_c.png) -->
 
 #### (d)  
 
 Once again we add $P(none)$ and $P(exactly1)$, the probabilities that either none or only one of the topics studied appears on the paper.
-
 In this case:
 $P(none) = \frac{\binom{10-n}{4}}{\binom{10}{4}}$, where $0<=n<=6$, outside of this range $P=0$. This is similar to $(c)$: the number of 4-topic exam combinations that can be made with the $10-n$ topics that were not studied divided by the total number of exams. If $n>6$, $P(none)=0$ as each exam covers 4 topics and there are $<4$ unstudied topics.  
-
 $P(exactly 1) = \frac{\binom{n}{1}*\binom{10-n}{3}}{\binom{10}{4}}$, where $1<=n<=7$, outside of this range $P=0$. As previously: we will only fail is $1$ or less of our studied topics appears (as 2 are required to pass). Get all combinations of only one of the studied topics appearing on the exam divided by the total number of exams.  
 
-<img src="images/Q1_d.png" alt="Graph of P(failure) with 4 questions on exam" width="300"/>
+<img src="images/Q1_d.png" alt="Graph of P(failure) with 4 questions on exam" width="350"/>
 
 <!-- ![Graph of P(failure) with 4 questions on exam](images/Q1_d.png) -->
 
@@ -50,43 +41,25 @@ The code generates 2 random lists of numbers 0-10. It selects the first 3 from o
 
 #### (f)
 
-Call function from $(e)$ N times and return the mean
-
-Searching for range $[\mu-2\sigma, \mu+2\sigma]$
-$$
-\mu \plusmn 2 \frac{\sigma}{\sqrt{N}}
-$$
-$var(X_i)=\sigma^2$
-$$
-E[X_i]\plusmn2\frac{\sqrt{var(X_i)}}{\sqrt{N}}
-$$
-$$
-E[X_i]\plusmn2\sqrt{\frac{var(X_i)}{N}}
-$$
-
+Call function from $(e)$ N times and return the mean.
+Searching for range $[\mu-2\sigma, \mu+2\sigma]$  
+$\mu \plusmn 2 \frac{\sigma}{\sqrt{N}}$  
+$var(X_i)=\sigma^2$  
+$E[X_i]\plusmn2\frac{\sqrt{var(X_i)}}{\sqrt{N}}$  
+$E[X_i]\plusmn2\sqrt{\frac{var(X_i)}{N}}$  
 Using $(c)$:  
 $1-E[X_i]=0.1833, E[X_i]=0.8167$ when $n=7$.  
-$var(X_i)=\mu*(1-\mu)=0.8167*0.1833=0.1497$
-
-
+$var(X_i)=\mu*(1-\mu)=0.8167*0.1833=0.1497$  
 Where $N=1,000$:  
-$0.8167\plusmn2\sqrt{\frac{0.1497}{1000}}$  
-$0.8167\plusmn0.02447$  
-$[0.79223,0.84117]$
-
+$0.8167\plusmn2\sqrt{\frac{0.1497}{1000}} \Rightarrow$ $0.8167\plusmn0.02447 \Rightarrow$ $[0.79223,0.84117]$  
 Where $N=10,000$:  
-$0.8167\plusmn2\sqrt{\frac{0.1497}{10000}}$  
-$0.8167\plusmn0.00773$  
-$[0.80897,0.82443]$
+$0.8167\plusmn2\sqrt{\frac{0.1497}{10000}} \Rightarrow$ $0.8167\plusmn0.00773 \Rightarrow$ $[0.80897,0.82443]$
 
 #### (g)  
 
 At every iteration of the simulation the following is done $N$ times: a new exam and a new set of studied topics is generated. After this, it is determined if the student has passes the exam ie. more than 1 of the studied topics is on the exam. It then uses this to calculate the mean $Y$.  
-
 Each time this is done, the value of $Y$ is compared to the confidence interval and if it is within the confidence interval it is added to a tally. When the simulations have run, this number is divided by $X$ to find the percentage of results that landed within the confidence interval.
-
 I chose the value of $X$ to be $1,000$. The reason for this is that we are already using quite large values for $N$: $N=1,000,N=10,000$ resulting in a total number of iterations of $1,000,000$ and $10,000,000$ respectively. This number is more than large enough to provide an accurate result. Running time was also unreasonable when $X>1,000$ which did factor into the decision.  
-
 In the case of $N=1,000$ the simulation resulted in an accuracy of $95.4\%$.  
 In the case of $N=10,000$ the simulation resulted in an accuracy of $94.9\%$.  
 These results seem very reasonable as both are quite close to $95\%$. With a different seed for the random number generator the result could be slightly different but both results are acceptably close to $95\%$.
@@ -99,37 +72,32 @@ The first 3 topics studied will be the ones on the previous exam. After this, th
 The simulation was modified as follows:  
 A 'past exam' was generated, representing the previous year's exam. Based on how predicatable this year's exam is, the questions from the previous exam were more likely to be selected this year. The student's approach to the exam was to first study the previous exam and then all other topics.  
 
-<img src="images/Q1_h_line.png" alt="Graph of chance of passing vs predictability" width="300"/>
+<img src="images/Q1_h_line.png" alt="Graph of chance of passing vs predictability" width="350"/>
 
 <!-- ![Graph of chance of passing vs predictability](images/Q1_h_line.png) -->
 
 Here the legend refers to the % probability that a question will appear on this year's exam, given that it appeared last year. The simulation was run for $N=1,000$ for all values. As can be clearly seen in this chart: a more predictable exam will result in a much higher chance of passing.
 In the case of a completely random exam, each question has a $1/10+1/9+1/8 = 33.6\%$ chance of appearing on the paper. Here we can see what happens when we chance that probability from 30-100% in intervals of 10%.  
 
-
 **Case B** - Less likely to appear after being on the last exam:  
 In this case the student would take a different approach:  
 The last 3 questions studied would be those in last year's exam. All others would be chosen at random.  
 The code for this operates in a similar manner to Case A where percentages go from $0\rightarrow30\%$ in intervals of $5\%$.
 
-<img src="images/Q1_h_b_line.png" alt="Graph of chance of passing vs predicability 2" width="300"/>
+<img src="images/Q1_h_b_line.png" alt="Graph of chance of passing vs predicability 2" width="350"/>
 
 <!-- ![Graph of chance of passing vs predicability 2](images/Q1_h_b_line.png) -->
-
 Again the legend refers to the probability (in %) that a question will appear on this year's exam, given that it was on last year's exam.
 In this case, the chance of passing was not increased as drastically as in the previous case where a question is more likely to appear 2 exams in a row. It does reduce the number of topics required to be studied from 9 to 6 if the exam is perfectly predictable and the student wants to guarantee that they will pass.
 
 **Case C** - The exam is not predictable but the student assumes it is:  
 Here we apply all 3 strategies of studying: random selection, prioritising questions that **were** on last year's exam, prioritising questions that **were not** on last year's exam. The results should be the same for all 3 as all questions have the same probability of appearing but we will run the simulation anyway.
 
-<img src="images/Q1_h_c_line.png" alt="Study pref vs chance of passing" width="300"/>
+<img src="images/Q1_h_c_line.png" alt="Study pref vs chance of passing" width="350"/>
 
 <!-- ![Study pref vs chance of passing](images/Q1_h_c_line.png)   -->
-
-
 Here the legend refers to the student's approach when studying topics. As can be seen in the graph, there is no advantage to any of the study methods when the exam is randomised. While the results are not exactly the same, they are close enough to be considered equal for the sample size. This also means that there is no disadvantage to the student for assuming the exam is predictable, when it is not.
 
-<br><br>
 
 ### Q2  
 
@@ -138,20 +106,17 @@ Dataset:  `# id:0.332:0.5-0.524:2-0.308:2-0`
 #### (a)  
 
 
-<img src="images/Q2_a_1.png" alt="Question 1" width="300"/>
-<img src="images/Q2_a_2.png" alt="Question 2" width="300"/>
-<img src="images/Q2_a_3.png" alt="Question 3" width="300"/>
+<img src="images/Q2_a_1.png" alt="Question 1" width="270"/>
+<img src="images/Q2_a_2.png" alt="Question 2" width="270"/>
+<img src="images/Q2_a_3.png" alt="Question 3" width="270"/>
 
 <!-- ![Question 1](images/Q2_a_1.png) -->
 <!-- ![Question 2](images/Q2_a_2.png) -->
 <!-- ![Question 3](images/Q2_a_3.png) -->
 
-When comparing each of these questions, we can see a clear trend with each question. In the case of the first question, a large number of students got full marks. There is also a cluster at each end with students trending towards doing very well or very poorly. This distribution of marks could hint at a question that was not inherently difficult but may have been a niche topic to study. A question with a specific answer that wasn't difficult if studied but hard to guess (hence the lack of scores around 50%).
-
+When comparing each of these questions, we can see a clear trend with each question. In the case of the first question, a large number of students got full marks. There is also a cluster at each end with students trending towards doing very well or very poorly. This distribution of marks could hint at a question that was not inherently difficult but may have been a niche topic to study. A question with a specific answer that wasn't difficult if studied but hard to guess (hence the lack of scores around 50%).  
 The second question has a more central distribution with few students failing (<40%) but none doing exceptionally well. Most scores are clustered around the 50% mark. This seems to show that it was relatively easy to pass but very hard to do well. It also implies that most students were prepared for this question.
-
 Question 3 seems to have been a reasonable question. Most students passed with a mark of ~50% but the results also tailed upwards implying that it allowed students who worked hard or were very well prepared to perform to a higher standard. Therefore I would assume it is a well balanced question that was not very hard to achieve a passing grade in while also allowing students to distinguish themselves.
-
 This approach to evaluating the difficulty of questions has several advantages and disadvantages. Advantages include that it is very quick and easy to view the information as all it requires is plotting the results, it also provides information on the distribution of results.  
 However it doesn't show information about how individual students performed across the exams ie a student could do very well in one exam but poorly in another and this type on analysis would not show that.
 
@@ -159,16 +124,15 @@ However it doesn't show information about how individual students performed acro
 
 The following two graphs illustrate the conditioned mean and variance for Q2 & Q3 based on results in Q1. This was achieved by grouping each of the students based on their score in Q1 and and then plotting both their mark for Q2 & Q3 as well as the variance at each (calculated using the matlab $var$ function).
 
-<img src="images/Q2_b_mean.png" alt="Means" width="300"/>
+<img src="images/Q2_b_mean.png" alt="Means" width="350"/>
 
 <!-- ![Means](images/Q2_b_mean.png) -->
 
-<img src="images/Q2_b_var.png" alt="Variance" width="300"/>
+<img src="images/Q2_b_var.png" alt="Variance" width="350"/>
 
 <!-- ![Variance](images/Q2_b_var.png) -->
 
-Here the mean follows a general upward trend, where students who performed well in the first question generally also did well in the subsequent 2. However the variance is very high.
-
+Here the mean follows a general upward trend, where students who performed well in the first question generally also did well in the subsequent 2. However the variance is very high.  
 I did not use binning to group the data. In this case all scores are in groups of $5\%$ however they are not binned as all results in the dataset were multiples of $5\%$. It could be useful to bin the results in batches of $10\%$ as these are generally what grade lines are based on eg. the difference between a 2nd and a 1st is $10\%+$, more granular measurements of grades are not pertinent to the final grade.  
 In the case of real-world data where results are not multiples of $5\%$, binning would be important, as it would mostly likely be a waste of time to compare exact scores, in this case I would again use bins of $5\%$.
 
@@ -176,7 +140,7 @@ In the case of real-world data where results are not multiples of $5\%$, binning
 
 I used CLT to determine the mean conditioned mark with a 95% confidence interval. To do this we take the previous values for the mean and applying the following formulas using the calculated variance: $\sigma = \sqrt{variance}$, $\mu \plusmn 1.96 * \frac{\sigma}{\sqrt{N}}$. The resulting interval was then added to the mean mark as error bars (something that matlab doesn't natively support for grouped bar charts so they had to be placed manually).
 
-<img src="images/Q2_c.png" alt="Mean with error bars" width="300"/>
+<img src="images/Q2_c.png" alt="Mean with error bars" width="350"/>
 
 <!-- ![Mean with error bars](images/Q2_c.png) -->
 
@@ -191,10 +155,8 @@ This data also shows that Q1 was dramatically harder than the other questions ev
 In this case we would be using linear regression to find a least-squares fit.  
 Plot the data of $Score(Q1)$ vs $Score(Q2)$. Draw a line through the data that seems reasonable. Rate the accuracy by tallying the total value given by getting the distance from each point to the line and squaring it.  
 Adjust the line and repeat.
-Repeat this until an optimal solution is reached (the lowest resulting value).
-
+Repeat this until an optimal solution is reached (the lowest resulting value).  
 This approach is not ideally suited to this kind of prediction as the relationship in between the results is not linear. It might provide more accurate results by considering other factors such as the distribution of the results for each question when defining the model.  
-
 In the case of linear regression, we expect the output to be a gaussian random variable ie. normally distributed about a mean with a variance of 1. In this case however the variance is much higher than this and unsuitable for this kind of analysis.
 
 #### (e)  
